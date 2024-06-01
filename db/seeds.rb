@@ -1,6 +1,24 @@
 require 'faker'
 
-100.times do |i|
+User.create!(
+  name: "shimon",
+  user_id: "test_user",
+  profile: "This is a test user.",
+  profile_image: Faker::Avatar.image(slug: "test_user", size: "100x100"),
+  age: 20,
+  academic_year: "3",
+  department: "Computer Science",
+  hometown: "Toyama",
+  latitude: Faker::Address.latitude,
+  longitude: Faker::Address.longitude,
+  email: "testuser@example.com",
+  password: 'foobar',  # ここでパスワードを設定します
+  password_confirmation: 'foobar',  # パスワード確認
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+99.times do |i|
   User.create!(
     name: Faker::Name.name,
     user_id: "user_#{i + 1}",
@@ -12,6 +30,9 @@ require 'faker'
     hometown: Faker::Address.city,
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
+    email: Faker::Internet.unique.email,
+    password: 'password123',  # ここでパスワードを設定します
+    password_confirmation: 'password123',  # パスワード確認
     created_at: Time.now,
     updated_at: Time.now
   )

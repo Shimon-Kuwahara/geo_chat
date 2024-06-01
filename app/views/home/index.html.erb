@@ -1,0 +1,16 @@
+<h1>Welcome Home</h1>
+<p>You are logged in!</p>
+<h1>Matched Users</h1>
+
+<% @matches.each do |match| %>
+  <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
+  <div class="matched-user">
+    <img src="<%= matched_user.profile_image %>" alt="<%= matched_user.name %>'s profile image" />
+    <p>Name: <%= matched_user.name %></p>
+    <p>Profile: <%= matched_user.profile %></p>
+    <p>Age: <%= matched_user.age %></p>
+    <p>Academic Year: <%= matched_user.academic_year %></p>
+    <p>Department: <%= matched_user.department %></p>
+    <p>Hometown: <%= matched_user.hometown %></p>
+  </div>
+<% end %>
