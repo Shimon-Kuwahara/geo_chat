@@ -12,5 +12,6 @@
     <p>Academic Year: <%= matched_user.academic_year %></p>
     <p>Department: <%= matched_user.department %></p>
     <p>Hometown: <%= matched_user.hometown %></p>
+    <p><%= link_to 'チャットを始める', chat_path(matched_user.id), class: "ml-3" %></p>
   </div>
 <% end %>
