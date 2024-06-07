@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   resources :chats, only: [:show, :create]
-  resources :users, only: [:show]
+  resources :users
 end

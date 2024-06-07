@@ -5,3 +5,4 @@
 <p>学部: <%= @user.department %></p>
 <p>出身地: <%= @user.hometown %></p>
 <p>プロフィール: <%= @user.profile %></p>
+<p><%= link_to 'チャットを始める', chat_path(@user.id), class: "ml-3" %></p>
