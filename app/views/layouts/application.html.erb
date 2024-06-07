@@ -11,19 +11,32 @@
   </head>
 
   <body>
+  
+  
   <header>
-   <% if user_signed_in? %>
+   <% if logged_in? %>
      <li>
-       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <%= link_to "ログアウト", logout_path %>
      </li>
    <% else %>
+     
      <li>
-       <%= link_to "新規登録", new_user_registration_path %>
-     </li>
-     <li>
-       <%= link_to "ログイン", new_user_session_path %>
+     <a href="/auth/twitter">ログイン</a>
      </li>
    <% end %>
+
+
+   
+   <% if logged_in? %>
+   <li>
+   <%= link_to "編集", edit_user_path(current_user) %>
+   </li>
+   <%end%>
+   
+  
+   </header>
   <%= yield %>
+  
+  
 </body>
 </html>

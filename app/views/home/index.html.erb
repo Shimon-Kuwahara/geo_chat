@@ -1,3 +1,6 @@
+
+<%if logged_in? %>
+
 <h1>Welcome Home</h1>
 <p>You are logged in!</p>
 <h1>Matched Users</h1>
@@ -14,3 +17,8 @@
     <p>Hometown: <%= matched_user.hometown %></p>
   </div>
 <% end %>
+
+
+<% else %>
+ログインしてください。
+<%end%>

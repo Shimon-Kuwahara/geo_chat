@@ -53,3 +53,11 @@ end
 
 gem 'devise'
 gem 'geocoder'
+
+gem 'carrierwave', '~> 2.0'
+
+gem 'dotenv-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
+
+gem 'bootstrap'
