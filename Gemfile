@@ -60,4 +60,5 @@ gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
-gem 'bootstrap'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
