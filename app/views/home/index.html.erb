@@ -6,11 +6,8 @@
   <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
   <div class="matched-user">
     <img src="<%= matched_user.profile_image %>" alt="<%= matched_user.name %>'s profile image" />
-    <p>Name: <%= matched_user.name %></p>
-    <p>Profile: <%= matched_user.profile %></p>
-    <p>Age: <%= matched_user.age %></p>
-    <p>Academic Year: <%= matched_user.academic_year %></p>
-    <p>Department: <%= matched_user.department %></p>
-    <p>Hometown: <%= matched_user.hometown %></p>
+    <p>ユーザ名: <%= matched_user.name %></p>
+    <p>マッチ時間: <%= match.created_at %></p>
+    <%= link_to 'プロフィールを見る', user_path(matched_user) %>
   </div>
 <% end %>
