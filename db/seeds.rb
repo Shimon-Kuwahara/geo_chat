@@ -54,7 +54,7 @@ User.create!(
 #   updated_at: Time.now
 # )
 
-0.times do |i|
+50.times do |i|
   User.create!(
     name: Faker::Name.name,
     user_id: "user_#{i + 1}",
@@ -75,7 +75,7 @@ User.create!(
 end
 
 user_ids = User.pluck(:id)
-10.times do
+0.times do
   user_id = user_ids.sample
   matched_user_id = (user_ids - [user_id]).sample  # 自己マッチを避ける
   Match.create!(

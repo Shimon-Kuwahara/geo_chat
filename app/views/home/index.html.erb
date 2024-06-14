@@ -8,6 +8,8 @@
     <img src="<%= matched_user.profile_image %>" alt="<%= matched_user.name %>'s profile image" />
     <p>ユーザ名: <%= matched_user.name %></p>
     <p>マッチ時間: <%= match.created_at %></p>
+    <p>経度: <%= match.match_latitude %></p>
+    <p>緯度: <%= match.match_longitude %></p>
     <%= link_to 'プロフィールを見る', user_path(matched_user) %>
   </div>
 <% end %>

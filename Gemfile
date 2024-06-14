@@ -53,3 +53,4 @@ end
 
 gem 'devise'
 gem 'geocoder'
+gem 'whenever', require: false
