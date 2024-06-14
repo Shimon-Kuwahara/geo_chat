@@ -1,0 +1,10 @@
+<% @rooms.each do |room| %>
+    <% user_rooms = UserRoom.where(room_id: room.id).where.not(user_id: current_user.id)%>
+    <% user_rooms.each do |user_room| %>
+        <% opponent_user = user_room.user_id %>
+        <h1><%= opponent_user.name %></h1>
+        <img src="<%= opponent_user.profile_image %>" alt="<%= opponent_user.name %>'s profile image" />
+        <p><%= link_to 'チャットを始める', chat_path(opponent_user.id), class: "ml-3" %></p>
+    <% end %>
+<% end %>
+    
