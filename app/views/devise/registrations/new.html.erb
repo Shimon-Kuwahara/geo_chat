@@ -8,10 +8,12 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+ 
+
+
+  <%if @sns_id.present? %>
+   <%= hidden_field_tag :sns_auth, true %>
+  <% else %>
 
   <div class="field">
     <%= f.label :password %>
@@ -25,6 +27,8 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
