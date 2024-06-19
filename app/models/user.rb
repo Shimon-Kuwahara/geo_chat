@@ -13,6 +13,20 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2 }
 
+  def self.from_omniauth(auth)
+    sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
+    user = User.where(user_id: auth.info.uid).first_or_initialize(
+     name: auth.info.name,
+   )
+
+   if user.persisted?
+    sns.user = user
+    sns.save
+   end
+   { user: user, sns: sns }
+
+  end
+
   def update_location(latitude, longitude)
     self.latitude = latitude
     self.longitude = longitude
