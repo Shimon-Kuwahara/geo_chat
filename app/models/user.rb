@@ -17,6 +17,7 @@ class User < ApplicationRecord
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
     user = User.where(user_id: auth.info.uid).first_or_initialize(
      name: auth.info.name,
+     email: auth.info.email
    )
 
    if user.persisted?
