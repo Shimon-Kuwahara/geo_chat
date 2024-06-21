@@ -1,16 +1,16 @@
 namespace :create_matches do
-  desc "とりあえず文字列"
+  desc 'とりあえず文字列'
   # タスク名(create)を指定
   task create: :environment do
     create_all_match
   end
 
   task test: :environment do
-    Rails.logger.debug "caaaaaaaaaaaaaaaaallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll meee now!!!!"
+    # Rails.logger.debug 'caaaaaaaaaaaaaaaaallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll meee now!!!!'
   end
 
   EARTH_RADIUS_KM = 6378.137
-  MATCH_DISTANCE = 10_000
+  MATCH_DISTANCE = 10
 
   def self.create_all_match
     user_ids = User.pluck(:id)
