@@ -54,7 +54,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
      
      @sns_id = sns_info[:sns].id
-     render template: 'devise/registrations/new'
+     pass = Devise.friendly_token
+     @user.password=pass
+     @user.password_confirmation=pass
+     @user.save!
+     sign_in_and_redirect @user, event: :authentication
+     #render template: 'devise/registrations/new'
     end 
    end
 end
