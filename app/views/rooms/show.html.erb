@@ -1,0 +1,10 @@
+<h1>チャット一覧</h1>
+<% @rooms.each do |room| %>
+  <% opponent_rooms = UserRoom.where(room_id: room.room_id).where.not(user_id: current_user.id) %>
+  <% opponent_rooms.each do |opponent_room| %>
+    <% opponent_user = User.find(opponent_room.user_id) %>
+    <h2><%= User.find(opponent_room.user_id).name %></h2>
+    <img src="<%= opponent_user.profile_image %>" alt="<%= opponent_user.name %>'s profile image" />
+    <p><%= link_to 'チャットを始める', chat_path(opponent_user.id), class: "ml-3" %></p>
+  <% end %>
+<% end %>
