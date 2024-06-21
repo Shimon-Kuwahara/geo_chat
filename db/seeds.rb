@@ -12,8 +12,8 @@ User.create!(
   latitude: Faker::Address.latitude,
   longitude: Faker::Address.longitude,
   email: "testuser@example.com",
-  password: 'foobar',  # ここでパスワードを設定します
-  password_confirmation: 'foobar',  # パスワード確認
+  password: 'foobar',
+  password_confirmation: 'foobar',
   created_at: Time.now,
   updated_at: Time.now
 )
@@ -30,31 +30,30 @@ User.create!(
   latitude: Faker::Address.latitude,
   longitude: Faker::Address.longitude,
   email: Faker::Internet.free_email,
-  password: 'foobar02',  # ここでパスワードを設定します
-  password_confirmation: 'foobar02',  # パスワード確認
+  password: 'foobar02',
+  password_confirmation: 'foobar02',
   created_at: Time.now,
   updated_at: Time.now
 )
 
-# User.create!(
-#   name: "watanabe",
-#   user_id: "amane3",
-#   profile: "This is a test user.",
-#   profile_image: Faker::Avatar.image(slug: "test_user", size: "100x100"),
-#   age: 20,
-#   academic_year: "3",
-#   department: "Computer Science",
-#   hometown: "Kawagoe",
-#   latitude: Faker::Address.latitude,
-#   longitude: Faker::Address.longitude,
-#   email: Faker::Internet.free_email,
-#   password: 'foobar03',  # ここでパスワードを設定します
-#   password_confirmation: 'foobar03',  # パスワード確認
-#   created_at: Time.now,
-#   updated_at: Time.now
-# )
+Match.create!(
+  user_id: 1,
+  matched_user_id: 2,
+  match_latitude: Faker::Address.latitude,
+  match_longitude: Faker::Address.longitude,
+  created_at: Time.now,
+  updated_at: Time.now
+)
+Match.create!(
+  user_id: 2,
+  matched_user_id: 1,
+  match_latitude: Faker::Address.latitude,
+  match_longitude: Faker::Address.longitude,
+  created_at: Time.now,
+  updated_at: Time.now
+)
 
-50.times do |i|
+10.times do |i|
   User.create!(
     name: Faker::Name.name,
     user_id: "user_#{i + 1}",
@@ -67,7 +66,7 @@ User.create!(
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
     email: Faker::Internet.unique.email,
-    password: 'password123',  # ここでパスワードを設定します
+    password: 'password123',
     password_confirmation: 'password123',  # パスワード確認
     created_at: Time.now,
     updated_at: Time.now
