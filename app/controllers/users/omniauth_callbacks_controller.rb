@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'faker'
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should configure your model like this:
@@ -57,6 +58,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
      pass = Devise.friendly_token
      @user.password=pass
      @user.password_confirmation=pass
+     @user.email=Faker::Internet.free_email
      @user.save!
      sign_in_and_redirect @user, event: :authentication
      #render template: 'devise/registrations/new'
