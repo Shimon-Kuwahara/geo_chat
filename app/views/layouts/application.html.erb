@@ -23,9 +23,6 @@
      <li>
        <%= link_to "ログイン", new_user_session_path %>
      </li>
-     <li>
-     <%= link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path(include_email:true), method: :post%>
-     </li>
    <% end %>
   <%= yield %>
 </body>
