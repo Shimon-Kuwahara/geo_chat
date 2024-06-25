@@ -8,6 +8,8 @@
   <div class="matched-user">
     <% if matched_user.profile_image? %>
     <img src="<%= matched_user.profile_image.url %>" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+    <%else%>
+    <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
     <%end%>
     <p>ユーザ名: <%= matched_user.name %></p>
     <p>マッチ時間: <%= match.created_at %></p>
