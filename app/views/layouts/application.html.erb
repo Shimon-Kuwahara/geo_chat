@@ -12,7 +12,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
     <% else %>
       <li>
         <%= link_to "新規登録", new_user_registration_path %>
@@ -22,7 +22,9 @@
       </li>
     <% end %>
     <%= yield %>
+    <% if user_signed_in? %>
     <%= render 'layouts/footer' %>
+    <% end %>
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
