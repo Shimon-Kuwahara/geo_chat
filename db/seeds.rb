@@ -52,7 +52,6 @@ Match.create!(
   created_at: Time.now,
   updated_at: Time.now
 )
-=======
 User.create!(
   name: "kirita",
   user_id: "kirita2",
