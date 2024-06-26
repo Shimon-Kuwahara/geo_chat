@@ -7,7 +7,7 @@
     <% if opponent_user.profile_image? %>
     <img src="<%= opponent_user.profile_image.url %>" height=150 width=150 alt="<%= opponent_user.name %>'s profile image" />
     <%else%>
-    <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+    <img src="/assets/default.png" height=150 width=150 alt="<%= opponent_user.name %>'s profile image" />
     <%end%>
     <p><%= link_to 'チャットを始める', chat_path(opponent_user.id), class: "ml-3" %></p>
   <% end %>
