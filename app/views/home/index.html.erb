@@ -22,11 +22,13 @@
       <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
        <div class="col-sm-3 col-xs-6">
         <div class="matched-user">
-         <img src="<%= matched_user.profile_image %>" alt="<%= matched_user.name %>'s profile image" />
+        <% if matched_user.profile_image? %>
+         <img src="<%= matched_user.profile_image.url %>" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+        <% else %>
+         <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+        <% end %>
          <div><%= matched_user.name %></div>
          <div>マッチ時間: <%= match.created_at %></div>
-         <div>経度: <%= match.match_latitude %></div>
-         <div>緯度: <%= match.match_longitude %></div>
          <%= link_to 'プロフィールを見る', user_path(matched_user) %>
         </div>
        </div>
