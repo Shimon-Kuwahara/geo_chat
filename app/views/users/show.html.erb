@@ -1,5 +1,9 @@
 <h1><%= @user.name %>のプロフィール</h1>
-<img src="<%= @user.profile_image %>" alt="<%= @user.name %>'s profile image" />
+<% if @user.profile_image? %>
+<img src="<%= @user.profile_image.url %>" height=150 width=150 alt="<%= @user.name %>'s profile image" />
+<%else%>
+    <img src="/assets/default.png" height=150 width=150 alt="<%= @user.name %>'s profile image" />
+<%end%>
 <p>年齢: <%= @user.age %></p>
 <p>学年: <%= @user.academic_year %></p>
 <p>学部: <%= @user.department %></p>

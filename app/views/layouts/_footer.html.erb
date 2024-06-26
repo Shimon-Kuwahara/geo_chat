@@ -1,19 +1,26 @@
-<!DOCTYPE html>
 <footer class="footer-icons">
   <div class="container-fluid">
     <div class="row">
-     <div class="col-3 text-center">
-      <img src="/assets/chat.png" alt="" class="img-fluid">
-     </div>
-     <div class="col-3 text-center">
-      <img src="/assets/map.png" alt="" class="img-fluid">
-     </div>
-     <div class="col-3 text-center">
-      <img src="/assets/game.png" alt="" class="img-fluid">
-     </div>
-     <div class="col-3 text-center">
-      <img src="/assets/profile.png" alt="" class="img-fluid">
-     </div>
+      <div class="col-3 text-center">
+        <%= link_to "rooms/show" do %>
+          <img src="/assets/chat.png" alt="" class="img-fluid">
+        <% end %>
+      </div>
+      <div class="col-3 text-center">
+        <%= link_to root_path do %>
+          <img src="/assets/map.png" alt="" class="img-fluid">
+        <% end %>
+      </div>
+      <div class="col-3 text-center">
+        <%= link_to root_path do %>
+          <img src="/assets/game.png" alt="" class="img-fluid">
+        <% end %>
+      </div>
+      <div class="col-3 text-center">
+        <%= link_to root_path do %>
+          <img src="/assets/profile.png" alt="" class="img-fluid">
+        <% end %>
+      </div>
     </div>
-   </div>
+  </div>
 </footer>

@@ -11,13 +11,16 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms
   has_many :sns_credentials
 
+  mount_uploader :profile_image, AvatarUploader
+
   validates :name, presence: true, length: { minimum: 2 }
 
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
-    user = User.where(email: auth.info.email).first_or_initialize(
+    user = User.where(user_id: auth.uid).first_or_initialize(
      name: auth.info.name,
-     email: auth.info.email
+     email: auth.info.email,
+     user_id: auth.uid
    )
 
    if user.persisted?
