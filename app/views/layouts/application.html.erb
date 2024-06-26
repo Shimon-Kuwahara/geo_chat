@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header>GeoChat</header>
+    <%= render 'layouts/header' %>
       <% if user_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -31,6 +31,7 @@
       </li>
     <% end %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
