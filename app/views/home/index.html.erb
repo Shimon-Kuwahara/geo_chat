@@ -6,7 +6,11 @@
 <% @matches.each do |match| %>
   <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
   <div class="matched-user">
-    <img src="<%= matched_user.profile_image %>" alt="<%= matched_user.name %>'s profile image" />
+    <% if matched_user.profile_image? %>
+    <img src="<%= matched_user.profile_image.url %>" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+    <%else%>
+    <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+    <%end%>
     <p>ユーザ名: <%= matched_user.name %></p>
     <p>マッチ時間: <%= match.created_at %></p>
     <p>経度: <%= match.match_latitude %></p>

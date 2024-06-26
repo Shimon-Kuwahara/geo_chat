@@ -4,7 +4,11 @@
   <% opponent_rooms.each do |opponent_room| %>
     <% opponent_user = User.find(opponent_room.user_id) %>
     <h2><%= User.find(opponent_room.user_id).name %></h2>
-    <img src="<%= opponent_user.profile_image %>" alt="<%= opponent_user.name %>'s profile image" />
+    <% if opponent_user.profile_image? %>
+    <img src="<%= opponent_user.profile_image.url %>" height=150 width=150 alt="<%= opponent_user.name %>'s profile image" />
+    <%else%>
+    <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+    <%end%>
     <p><%= link_to 'チャットを始める', chat_path(opponent_user.id), class: "ml-3" %></p>
   <% end %>
 <% end %>

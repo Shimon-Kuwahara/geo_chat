@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms
   has_many :sns_credentials
 
+  mount_uploader :profile_image, AvatarUploader
+
   validates :name, presence: true, length: { minimum: 2 }
 
   def self.from_omniauth(auth)
