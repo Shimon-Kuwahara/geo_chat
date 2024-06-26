@@ -1,16 +1,41 @@
-<h1>Welcome Home</h1>
-<p><%= current_user.name %> are logged in!</p>
-<h1>Matched Users</h1>
+<html>
+ <h1>Welcome Home</h1>
+ <p><%= current_user.name %> are logged in!</p>
+ <h1>Matched Users</h1>
 
-<%= link_to 'チャット一覧', 'rooms/show' %>
-<% @matches.each do |match| %>
-  <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
-  <div class="matched-user">
-    <img src="<%= matched_user.profile_image %>" alt="<%= matched_user.name %>'s profile image" />
-    <p>ユーザ名: <%= matched_user.name %></p>
-    <p>マッチ時間: <%= match.created_at %></p>
-    <p>経度: <%= match.match_latitude %></p>
-    <p>緯度: <%= match.match_longitude %></p>
-    <%= link_to 'プロフィールを見る', user_path(matched_user) %>
-  </div>
-<% end %>
+ <head>
+  <title>GeoChat</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ </head>
+
+ <body>
+  <%= link_to 'チャット一覧', 'rooms/show' %>
+    <div class="container">
+     <div class="row">
+      <% @matches.each do |match| %>
+      <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
+       <div class="col-sm-3 col-xs-6">
+        <div class="matched-user">
+         <img src="<%= matched_user.profile_image %>" alt="<%= matched_user.name %>'s profile image" />
+         <div><%= matched_user.name %></div>
+         <div>マッチ時間: <%= match.created_at %></div>
+         <div>経度: <%= match.match_latitude %></div>
+         <div>緯度: <%= match.match_longitude %></div>
+         <%= link_to 'プロフィールを見る', user_path(matched_user) %>
+        </div>
+       </div>
+      <% end %>
+     </div>
+    </div>
+
+   <script src="js/bootstrap.min.js"></script>
+   <%= render 'layouts/footer' %>
+
+ </body>
+</html>
