@@ -1,19 +1,22 @@
 namespace :create_matches do
-  desc "とりあえず文字列"
+  desc 'とりあえず文字列'
   # タスク名(create)を指定
   task create: :environment do
     create_all_match
-    Rails.logger.debug "テストおおおおおおおおお"
+  end
+
+  task test: :environment do
+    # Rails.logger.debug 'caaaaaaaaaaaaaaaaallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll meee now!!!!'
   end
 
   EARTH_RADIUS_KM = 6378.137
-  MATCH_DISTANCE = 1.0
+  MATCH_DISTANCE = 10
 
   def self.create_all_match
     user_ids = User.pluck(:id)
     user_ids.each do |user_id|
       user = User.find(user_id)
-      matched_user_ids = (user_ids - [user_id]).sample(10) # サンプルを10個取得する例
+      matched_user_ids = (user_ids - [user_id])
       matched_user_ids.each do |matched_user_id|
         matched_user = User.find(matched_user_id)
         if cal_distance(user.latitude, user.longitude, matched_user.latitude, matched_user.longitude) < MATCH_DISTANCE

@@ -35,5 +35,8 @@
 /config/master.key
 
 /.env
+/.solargraph.yml
+/.rubocop_todo.yml
+/.rubocop.yml
 
 /public/uploads
