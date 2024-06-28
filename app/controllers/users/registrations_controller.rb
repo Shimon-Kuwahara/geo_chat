@@ -1,6 +1,12 @@
 # frozen_string_literal: true
+require 'faker'
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  #before_action :configure_permitted_parameters
+
+  #def configure_permitted_parameters
+  # devise_parameter_sanitizer.permit(:sign_up, keys: [:profile_image, :age, :academic_year, :department, :hometown, :profile,:user_id,:sns_auth])
+  #end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -62,10 +68,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     if params[:sns_auth] == 'true'
+      pp "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",params[:user_id]
+      uid=params[:user_id]
       pass = Devise.friendly_token
       params[:user][:password] = pass
       params[:user][:password_confirmation] = pass
+      params[:user][:email]=Faker::Internet.free_email
+      
+      params[:user][:user_id]=uid
     end
     super
   end
+
+  
 end
