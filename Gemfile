@@ -61,6 +61,7 @@ end
 gem 'devise'
 gem 'geocoder'
 gem 'whenever', require: false
+gem 'rubocop', require: false
 
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
