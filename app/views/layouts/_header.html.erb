@@ -1,3 +1,7 @@
-<header>GeoChat
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-</header>
+<% if user_signed_in? %>
+    <header>GeoChat
+     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </header>
+<% else %>
+    <header>GeoChat</header>
+<% end %>
