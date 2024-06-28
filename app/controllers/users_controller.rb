@@ -9,6 +9,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def new
+    @user = User.new(user_params)
+  end
+
+  def create
+    @user = User.new(user_params)
+    pass = Devise.friendly_token
+    @user.password=pass
+    @user.password_confirmation=pass
+    @user.email=Faker::Internet.free_email
+    @user.save!
+    sign_in_and_redirect @user, event: :authentication
+  end
+
   def edit
     @user = User.find_by(id: params[:id])
   end
