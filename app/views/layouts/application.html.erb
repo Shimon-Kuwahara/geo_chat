@@ -12,15 +12,6 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <% if user_signed_in? %>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
     <%= yield %>
     <% if user_signed_in? %>
     <%= render 'layouts/footer' %>
