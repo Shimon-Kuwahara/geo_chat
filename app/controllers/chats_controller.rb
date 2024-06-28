@@ -13,6 +13,7 @@ class ChatsController < ApplicationController
         end
         @chats = @room.chats#チャットの一覧
         @chat = Chat.new(room_id: @room.id)#チャットの投稿
+        @chat_partner_name = @user.name # チャット相手の名前を設定
     end
 
     def create
