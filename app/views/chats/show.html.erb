@@ -1,8 +1,9 @@
 <div class="chat-container">
+  <%= link_to '＜ チャット一覧に戻る', '/rooms/show' %>
   <div class="chat-topbar">
-    <h2><%= @user.name %> さんとのチャット</h2>
+    <span class="chat-partner-name"><%= @chat_partner_name %></span> <!-- クラスを追加 -->
   </div>
-  <div class="message">
+  <div class="chat-messages">
     <%= render "chats/messages", chats: @chats %>
   </div>
 
@@ -11,10 +12,10 @@
       <div class="errors">
         <%= render "layouts/errors", obj: f.object %>
       </div>
-      <%= f.text_field :message, placeholder: "メッセージを入力してください", autocomplete: "off" %>
+      <%= f.text_field :message, placeholder: "メッセージを入力してください", autocomplete: "off", class: "chat-input" %>
       <%= f.hidden_field :room_id, value: @room.id %>
-      <%= f.submit "送信" %>
+      <%= f.submit "SEND", class: "send-button" %>
     <% end %>
   </div>
-  <%= link_to 'チャット一覧に戻る', '/rooms/show' %>
+
 </div>
