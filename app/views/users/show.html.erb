@@ -14,6 +14,27 @@
 <p>経度: <%= @user.longitude %></p>
 <% if @user.id == current_user.id %>
     <p><%= link_to 'myプロフィール編集', edit_user_path(current_user) %></p>
+    <%= form_with url: users_init_path, method: :post do %>
+    <%= submit_tag 'init location' %>
+    <% end %>
+    <%= form_with url: users_update_path, method: :post, id: "location_form" do %>
+    <%= hidden_field_tag :latitude %>
+    <%= hidden_field_tag :longitude %>
+    <%= submit_tag 'Send Location' %>
+<% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        document.getElementsByName("latitude")[0].value = position.coords.latitude;
+        document.getElementsByName("longitude")[0].value = position.coords.longitude;
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  });
+</script>
 <% else %>
     <p><%= link_to 'チャットを始める', chat_path(@user.id), class: "ml-3" %></p>
 <% end %>

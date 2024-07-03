@@ -60,6 +60,7 @@ end
 
 gem 'devise'
 gem 'geocoder'
+gem 'geolocation'
 gem 'whenever', require: false
 gem 'rubocop', require: false
 
