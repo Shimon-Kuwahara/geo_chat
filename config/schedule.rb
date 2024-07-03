@@ -4,6 +4,6 @@ set :environment, rails_env # cronを実行する環境変数をセット
 ENV.each { |k, v| env(k, v) }
 set :output, "#{Rails.root}/log/development.log" # cronのログ出力用ファイル
 
-every 1.hour do
+every 24.hour do
   rake 'create_matches:create'
 end
