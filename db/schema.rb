@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_12_034945) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_28_080708) do
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
     t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "exchanging_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,6 +37,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_12_034945) do
     t.index ["user_id"], name: "index_matches_on_user_id"
   end
 
+  create_table "piece_sets", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pieces", force: :cascade do |t|
+    t.string "name"
+    t.integer "set_id"
+    t.integer "location_x"
+    t.integer "location_y"
+    t.integer "set_x"
+    t.integer "set_y"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,6 +67,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_12_034945) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
+  create_table "user_pieces", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "piece_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_rooms", force: :cascade do |t|

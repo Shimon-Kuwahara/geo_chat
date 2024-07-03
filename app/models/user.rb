@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms
   has_many :sns_credentials
 
+  has_many :user_pieces
+  has_many :exchanges, dependent: :destroy
+  has_many :pieces, through: :user_pieces
+
   mount_uploader :profile_image, AvatarUploader
 
   validates :name, presence: true, length: { minimum: 2 }
