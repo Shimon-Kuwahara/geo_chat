@@ -6,8 +6,8 @@
     <%= link_to "ログイン", new_user_session_path %>
   </li>
 <% else %>
-  <%= link_to 'Twitter連携', user_twitter_omniauth_authorize_path, method: :post%><br/>
-  <%= link_to 'Google連携', user_google_oauth2_omniauth_authorize_path, method: :post%>
+  <%= button_to 'Twitter連携', user_twitter_omniauth_authorize_path, method: :post, class: "btn btn-primary" %><br/>
+  <%= button_to 'Google連携', user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-success" %>
 <% end %>
 
 <h2>ログイン</h2>
@@ -30,7 +30,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "btn btn-secondary" %>
   </div>
 <% end %>
 
