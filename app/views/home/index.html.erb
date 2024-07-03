@@ -1,7 +1,7 @@
 <html>
- <h1>Welcome Home</h1>
- <p><%= current_user.name %> are logged in!</p>
- <h1>Matched Users</h1>
+ <h1>ようこそ、'ここだよ'へ！</h1>
+ <p><%= current_user.name %>のアカウントです。</p>
+ <h1>マッチ履歴</h1>
 
  <head>
   <title>GeoChat</title>
@@ -15,27 +15,26 @@
  </head>
 
  <body>
-  <%= link_to 'チャット一覧', 'rooms/show' %>
-    <div class="container">
-     <div class="row">
-      <% @matches.each do |match| %>
-      <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
-       <div class="col-sm-3 col-xs-6">
-        <div class="matched-user">
-        <% if matched_user.profile_image? %>
-         <img src="<%= matched_user.profile_image.url %>" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
-        <% else %>
-         <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
-        <% end %>
-         <div><%= matched_user.name %></div>
-         <div>マッチ時間: <%= match.created_at %></div>
-         <%= link_to 'プロフィールを見る', user_path(matched_user) %>
-        </div>
-       </div>
+  <div class="container">
+    <div class="row">
+    <% @matches.each do |match| %>
+    <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
+      <div class="col-sm-3 col-xs-6">
+      <div class="matched-user">
+      <% if matched_user.profile_image? %>
+        <img src="<%= matched_user.profile_image.url %>" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+      <% else %>
+        <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
       <% end %>
-     </div>
+        <div><%= matched_user.name %></div>
+        <div>マッチ時間: <%= match.created_at %></div>
+        <%= link_to 'プロフィールを見る', user_path(matched_user) %>
+      </div>
+      </div>
+    <% end %>
     </div>
-
+  </div>
+  
    <script src="js/bootstrap.min.js"></script>
  </body>
 </html>
