@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_05_071558) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "unread", default: true, null: false
   end
 
   create_table "matches", force: :cascade do |t|

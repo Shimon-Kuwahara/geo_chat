@@ -3,6 +3,8 @@
   <% opponent_rooms = UserRoom.where(room_id: room.room_id).where.not(user_id: current_user.id) %>
   <% opponent_rooms.each do |opponent_room| %>
     <% opponent_user = User.find(opponent_room.user_id) %>
+    <% number_of_unread = Chat.where(room_id:room.room_id, user_id:opponent_user.id, unread:true).length %>
+    <
     <h2><%= User.find(opponent_room.user_id).name %></h2>
     <% if opponent_user.profile_image? %>
     <img src="<%= opponent_user.profile_image.url %>" height=150 width=150 alt="<%= opponent_user.name %>'s profile image" />
@@ -10,5 +12,9 @@
     <img src="/assets/default.png" height=150 width=150 alt="<%= opponent_user.name %>'s profile image" />
     <%end%>
     <p><%= link_to 'チャットを始める', chat_path(opponent_user.id), class: "ml-3" %></p>
+    <% if number_of_unread >0 %>
+     <img src="/assets/midokucircle.png" height=15 width=15> 
+    <%=number_of_unread%>
+    <%end%>
   <% end %>
 <% end %>
