@@ -17,7 +17,7 @@
  .chat-container {
   display: flex;
   flex-direction: column;
-  height: 83vh;
+  height: 81vh;
   background-color: #deecf3;
 }
 
@@ -118,6 +118,7 @@
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .header-logout {
@@ -153,3 +154,79 @@
   object-fit: cover;
 }
 
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh; /* 必要に応じて調整 */
+}
+
+.centered-container .btn,
+.centered-container form {
+  width: 100%;
+  max-width: 300px; /* 必要に応じて調整 */
+}
+
+.centered-container form .actions {
+  display: flex;
+  justify-content: center;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.chat-icon img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.chat-details {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.chat-details h2 {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.unread-count {
+  position: relative;
+}
+
+.unread-number {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.centered-container {
+  text-align: center;
+  margin-bottom: 20px; /* マージンを追加して下にスペースを作成 */
+}
+
+.matched-user {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.matched-user img {
+  border-radius: 50%;
+}
+
+.matched-user .btn {
+  width: 90%; /* ボタンを小さくする */
+}

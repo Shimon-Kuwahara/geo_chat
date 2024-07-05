@@ -1,40 +1,60 @@
 <html>
- <h1>ようこそ、'ここだよ'へ！</h1>
- <p><%= current_user.name %>のアカウントです。</p>
- <h1>マッチ履歴</h1>
+ <div class="centered-container">
+  <h1>マッチ履歴</h1>
+  <head>
+   <title>GeoChat</title>
+   <meta name="viewport" content="width=device-width,initial-scale=1">
+   <%= csrf_meta_tags %>
+   <%= csp_meta_tag %>
 
- <head>
-  <title>GeoChat</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+   <%= javascript_importmap_tags %>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- </head>
-
- <body>
-  <div class="container">
-    <div class="row">
-    <% @matches.each do |match| %>
-    <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
-      <div class="col-sm-3 col-xs-6">
-      <div class="matched-user">
-      <% if matched_user.profile_image? %>
-        <img src="<%= matched_user.profile_image.url %>" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
-      <% else %>
-        <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+  <body>
+    <div class="container">
+     <div class="row">
+      <% @matches.each do |match| %>
+      <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
+       <div class="col-6 col-lg-3 mb-4">
+        <div class="matched-user text-center p-2 border">
+        <% if matched_user.profile_image? %>
+         <img src="<%= matched_user.profile_image.url %>" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+        <% else %>
+         <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
+        <% end %>
+         <div><%= matched_user.name %></div>
+         <div>マッチ時間: <%= formatted_time(match.created_at) %></div>
+         <%= link_to 'プロフィールを見る', user_path(matched_user), class: "btn btn-info ml-1" %>
+        </div>
+       </div>
       <% end %>
-        <div><%= matched_user.name %></div>
-        <div>マッチ時間: <%= formatted_time(match.created_at) %></div>
-        <%= link_to 'プロフィールを見る', user_path(matched_user) %>
-      </div>
-      </div>
-    <% end %>
-    </div>
-  </div>
+      <%= form_with url: users_update_path, method: :post, id: "location_form" do %>
+        <%= hidden_field_tag :latitude %>
+        <%= hidden_field_tag :longitude %>
+      <% end %>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementsByName("latitude")[0].value = position.coords.latitude;
+            document.getElementsByName("longitude")[0].value = position.coords.longitude;
+
+            document.getElementById("location_form").submit();
+          }, function(error) {
+            console.error("Error obtaining location: ", error);
+          });
+        } else {
+          alert("Geolocation is not supported by this browser.");
+        }
+        // キャッシュを無効にしてページをリロード
+        // window.location.reload(true);  
+       });
+      </script>
   
    <script src="js/bootstrap.min.js"></script>
- </body>
+  </body>
+ </div>
 </html>
