@@ -49,7 +49,20 @@
 
  <% if @user.id == current_user.id %>
     <p><%= link_to 'myプロフィール編集', edit_user_path(current_user), class: "btn btn-dark" %></p>
+    <script>
+     document.addEventListener("DOMContentLoaded", function() {
+       if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+           document.getElementsByName("latitude")[0].value = position.coords.latitude;
+           document.getElementsByName("longitude")[0].value = position.coords.longitude;
+         });
+       } else {
+         alert("Geolocation is not supported by this browser.");
+       }
+     });
+    </script>
  <% else %>
     <p><%= link_to 'チャットを始める', chat_path(@user.id), class: "btn btn-info ml-3" %></p>
  <% end %>
 </div>
+
