@@ -12,6 +12,7 @@
 <p>学部: <%= @user.department %></p>
 <p>緯度: <%= @user.latitude %></p>
 <p>経度: <%= @user.longitude %></p>
+<p>マッチ距離: <%= @user.match_distance %></p>
 <% if @user.id == current_user.id %>
     <p><%= link_to 'myプロフィール編集', edit_user_path(current_user) %></p>
     <%= form_with url: users_init_path, method: :post do %>

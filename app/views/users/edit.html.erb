@@ -36,6 +36,11 @@
       <%= f.text_area :profile %>
     </div>
 
+    <div class="field">
+      <%= f.label :match_distance %><br>
+      <%= f.number_field :match_distance, in: 1..100 %>
+    </div>
+
     <div class="actions">
       <%= f.submit "更新" %>
     </div>
