@@ -104,6 +104,50 @@ for user in ary do
   end
 end
 
+PieceSet.create!(
+  name: "University of Tsukuba",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "flame",
+  piece_set_id: 1,
+  location_x: 0,
+  location_y: 0,
+  size_x: 800,
+  size_y: 1600,
+  image: '/assets/1.png',
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "hongaku",
+  piece_set_id: 1,
+  location_x: 420,
+  location_y: 370,
+  size_x: 250,
+  size_y: 375,
+  image: '/assets/2.png',
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+UserPiece.create!(
+  user_id: 2,
+  piece_id: 1,
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+UserPiece.create!(
+  user_id: 2,
+  piece_id: 2,
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
 10.times do |i|
   User.create!(
     name: Faker::Name.name,

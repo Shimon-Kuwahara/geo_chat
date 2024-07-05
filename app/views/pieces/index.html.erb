@@ -1,12 +1,18 @@
 <h1>ピース集めの旅</h1>
 <% @users.each do |user| %>
-    <div>
-        <% if user.profile_image? %>
-         <img src="<%= user.profile_image.url %>" height=150 width=150 alt="<%= user.name %>'s profile image" />
-        <% else %>
-         <img src="/assets/default.png" height=150 width=150 alt="<%= user.name %>'s profile image" />
-        <% end %>
-        <%= user.name %>
-        <%= link_to '交換する', 'show' %>
-    </div>
+  <div>
+    <% if user.profile_image? %>
+      <img src="<%= user.profile_image.url %>" height=150 width=150 alt="<%= user.name %>'s profile image" />
+    <% else %>
+      <img src="/assets/default.png" height=150 width=150 alt="<%= user.name %>'s profile image" />
+    <% end %>
+    <%= user.name %>
+    <%= link_to '交換する', 'show' %>
+  </div>
 <% end %>
+
+<div data-controller="map" data-map-pieces="<%= raw @pieces.to_json %>">
+  <canvas data-map-target="canvas" id="canvas" width="1000" height="2000"></canvas>
+</div>
+
+<% console %>
