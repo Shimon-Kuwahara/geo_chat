@@ -25,7 +25,7 @@
          <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
         <% end %>
          <div><%= matched_user.name %></div>
-         <div>マッチ時間: <%= match.created_at %></div>
+         <div>マッチ時間: <%= formatted_time(match.created_at) %></div>
          <%= link_to 'プロフィールを見る', user_path(matched_user), class: "btn btn-info ml-1" %>
         </div>
        </div>
