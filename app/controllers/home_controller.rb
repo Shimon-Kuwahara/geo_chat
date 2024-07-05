@@ -4,5 +4,4 @@ class HomeController < ApplicationController
   def index
     @matches = Match.where(user_id: current_user.id)
   end
-
 end
