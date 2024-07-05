@@ -1,41 +1,68 @@
-<h1><%= @user.name %>のプロフィール</h1>
-<% if @user.profile_image? %>
-<img src="<%= @user.profile_image.url %>" height=150 width=150 alt="<%= @user.name %>'s profile image" />
-<%else%>
+<div class="centered-container">
+ <h3><%= @user.name %>のプロフィール</h3><br />
+ <% if @user.profile_image? %>
+ <img src="<%= @user.profile_image.url %>" height=150 width=150 alt="<%= @user.name %>'s profile image" />
+ <%else%>
     <img src="/assets/default.png" height=150 width=150 alt="<%= @user.name %>'s profile image" />
-<%end%>
-<p>年齢: <%= @user.age %></p>
-<p>学年: <%= @user.academic_year %></p>
-<p>学部: <%= @user.department %></p>
-<p>出身地: <%= @user.hometown %></p>
-<p>プロフィール: <%= @user.profile %></p>
-<p>学部: <%= @user.department %></p>
-<p>緯度: <%= @user.latitude %></p>
-<p>経度: <%= @user.longitude %></p>
-<p>マッチ距離: <%= @user.match_distance %></p>
-<% if @user.id == current_user.id %>
-    <p><%= link_to 'myプロフィール編集', edit_user_path(current_user) %></p>
-    <%= form_with url: users_init_path, method: :post do %>
-    <%= submit_tag 'init location' %>
-    <% end %>
-    <%= form_with url: users_update_path, method: :post, id: "location_form" do %>
-    <%= hidden_field_tag :latitude %>
-    <%= hidden_field_tag :longitude %>
-    <%= submit_tag 'Send Location' %>
-<% end %>
+ <%end%>
+ <br />
+ <div class="col-12 ml-3">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>項目</th>
+                <th>内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>年齢</td>
+                <td><%= @user.age %></td>
+            </tr>
+            <tr>
+                <td>学年</td>
+                <td><%= @user.academic_year %></td>
+            </tr>
+            <tr>
+                <td>学部</td>
+                <td><%= @user.department %></td>
+            </tr>
+            <tr>
+                <td>出身地</td>
+                <td><%= @user.hometown %></td>
+            </tr>
+            <tr>
+                <td>プロフィール</td>
+                <td><%= @user.profile %></td>
+            </tr>
+            <tr>
+                <td>緯度</td>
+                <td><%= @user.latitude %></td>
+            </tr>
+            <tr>
+                <td>経度</td>
+                <td><%= @user.longitude %></td>
+            </tr>
+        </tbody>
+    </table>
+ </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        document.getElementsByName("latitude")[0].value = position.coords.latitude;
-        document.getElementsByName("longitude")[0].value = position.coords.longitude;
-      });
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-  });
-</script>
-<% else %>
-    <p><%= link_to 'チャットを始める', chat_path(@user.id), class: "ml-3" %></p>
-<% end %>
+ <% if @user.id == current_user.id %>
+    <p><%= link_to 'myプロフィール編集', edit_user_path(current_user), class: "btn btn-dark" %></p>
+    <script>
+     document.addEventListener("DOMContentLoaded", function() {
+       if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+           document.getElementsByName("latitude")[0].value = position.coords.latitude;
+           document.getElementsByName("longitude")[0].value = position.coords.longitude;
+         });
+       } else {
+         alert("Geolocation is not supported by this browser.");
+       }
+     });
+    </script>
+ <% else %>
+    <p><%= link_to 'チャットを始める', chat_path(@user.id), class: "btn btn-info ml-3" %></p>
+ <% end %>
+</div>
+
