@@ -18,7 +18,11 @@
       </div>
       <div class="col-3 text-center">
         <%= link_to user_path(current_user) do %>
-          <img src=<%= current_user.profile_image.url %> alt="" class="img-fluid">
+          <% if current_user.profile_image.url %>
+            <img src=<%= current_user.profile_image.url %> alt="" class="img-fluid">
+          <% else %>
+            <img src="/assets/default.png" alt="" class="img-fluid">
+          <% end %>
         <% end %>
       </div>
     </div>
