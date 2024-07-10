@@ -142,8 +142,13 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  left: 0;
   background-color: #ddd;
   height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
 }
 
 .footer-icons .row {
@@ -166,6 +171,12 @@
   justify-content: center;
   padding: 10px;
   min-height: 70vh;
+  margin: 0; /* マージンを削除 */
+  padding-top: 20px; /* 上部のパディングを減らす */
+}
+
+.centered-container h1 {
+  margin-bottom: 20px; /* 下部のマージンを減らす */
 }
 
 .centered-container .btn,
