@@ -141,6 +141,7 @@
   background-color: #ddd;
   height: 70px;
 }
+
 .footer-icons .row {
   display: flex;
   justify-content: space-around;
@@ -159,13 +160,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 70vh; /* 必要に応じて調整 */
+  padding: 10px;
+  min-height: 70vh;
 }
 
 .centered-container .btn,
 .centered-container form {
   width: 100%;
-  max-width: 300px; /* 必要に応じて調整 */
+  max-width: 300px;
 }
 
 .centered-container form .actions {
@@ -215,12 +217,12 @@
 
 .centered-container {
   text-align: center;
-  margin-bottom: 20px; /* マージンを追加して下にスペースを作成 */
 }
 
 .matched-user {
   background-color: #f9f9f9;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .matched-user img {
@@ -228,5 +230,5 @@
 }
 
 .matched-user .btn {
-  width: 90%; /* ボタンを小さくする */
+  width: 90%; 
 }
