@@ -14,15 +14,21 @@ export default class extends Controller {
     const canvas = this.canvasTarget;
     const context = canvas.getContext('2d');
 
+    var image = new Image();
+    image.src = '/assets/1.png';
+    image.addEventListener('load', function() {
+        context.drawImage(image, 0, 0, 800, 1600);
+    }, false);
+
     this.pieces.forEach(piece => {
       const img = new Image();
       img.src = piece.image;
       img.onload = () => {
-        console.log(`Drawing image at (${piece.location_x}, ${piece.location_y})`);
+        console.log('Drawing image at (${piece.location_x}, ${piece.location_y})');
         this.drawImage(context, img, piece);
       };
       img.onerror = () => {
-        console.error(`Failed to load image: ${piece.image}`);
+        console.error('Failed to load image: ${piece.image}');
       };
     });
   }
@@ -33,6 +39,7 @@ export default class extends Controller {
 
 
   // connect() {
+  //   console.log(this.pieces);
   //   this.drawImages();
   // }
 

@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-<div data-controller="map" data-map-pieces="<%= raw @pieces.to_json %>">
+<div data-controller="map" data-map-pieces="<%= @pieces.to_json %>">
   <canvas data-map-target="canvas" id="canvas" width="1000" height="2000"></canvas>
 </div>
 

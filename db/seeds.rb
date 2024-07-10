@@ -134,12 +134,6 @@ Piece.create!(
   updated_at: Time.now
 )
 
-UserPiece.create!(
-  user_id: 2,
-  piece_id: 1,
-  created_at: Time.now,
-  updated_at: Time.now
-)
 
 UserPiece.create!(
   user_id: 2,
