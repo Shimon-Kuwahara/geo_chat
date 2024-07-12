@@ -1,4 +1,13 @@
 <h1>ピース集めの旅 ホーム</h1>
+<p>すれ違った人からピースを集め, 筑波大学を完成させよう！</p>
+
+<% if User.find_by(id: current_user.id).pieces.empty? %>
+  <% new_piece = Piece.all.sample(1).first %>
+  <h4>最初のピース「<%= new_piece.name %>」をゲットしました！</h4>
+  <% UserPiece.create(user_id: current_user.id, piece_id: new_piece.id) %>
+  <% @pieces = [new_piece] %>
+<% end %>
+
 <% @users.each do |user| %>
   <div>
     <%= link_to piece_path(user) do %>
@@ -15,5 +24,3 @@
 <div data-controller="map" data-map-pieces="<%= @pieces.to_json %>">
   <canvas data-map-target="canvas" id="canvas" width="1000" height="2000"></canvas>
 </div>
-
-<% console %>

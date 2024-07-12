@@ -111,19 +111,7 @@ PieceSet.create!(
 )
 
 Piece.create!(
-  name: "flame",
-  piece_set_id: 1,
-  location_x: 0,
-  location_y: 0,
-  size_x: 800,
-  size_y: 1600,
-  image: '/assets/1.png',
-  created_at: Time.now,
-  updated_at: Time.now
-)
-
-Piece.create!(
-  name: "hongaku",
+  name: "本学",
   piece_set_id: 1,
   location_x: 420,
   location_y: 370,
@@ -135,7 +123,7 @@ Piece.create!(
 )
 
 Piece.create!(
-  name: "taigei",
+  name: "体育芸術エリア",
   piece_set_id: 1,
   location_x: 350,
   location_y: 800,
@@ -147,7 +135,7 @@ Piece.create!(
 )
 
 Piece.create!(
-  name: "igaku",
+  name: "医学エリア",
   piece_set_id: 1,
   location_x: 90,
   location_y: 1090,
@@ -159,41 +147,20 @@ Piece.create!(
 )
 
 Piece.create!(
-  name: "kasuga",
+  name: "春日エリア",
   piece_set_id: 1,
   location_x: 140,
   location_y: 1430,
   size_x: 80,
   size_y: 160,
-  image: '/assets/6.png',
+  image: '/assets/5.png',
   created_at: Time.now,
   updated_at: Time.now
 )
 
 UserPiece.create!(
   user_id: 1,
-  piece_id: 2,
-  created_at: Time.now,
-  updated_at: Time.now
-)
-
-UserPiece.create!(
-  user_id: 1,
-  piece_id: 3,
-  created_at: Time.now,
-  updated_at: Time.now
-)
-
-UserPiece.create!(
-  user_id: 1,
-  piece_id: 4,
-  created_at: Time.now,
-  updated_at: Time.now
-)
-
-UserPiece.create!(
-  user_id: 2,
-  piece_id: 2,
+  piece_id: 1,
   created_at: Time.now,
   updated_at: Time.now
 )
