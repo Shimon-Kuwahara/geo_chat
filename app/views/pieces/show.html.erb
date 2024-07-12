@@ -1,3 +1,22 @@
-<h1>Pieces#show</h1>
-<p>Find me in app/views/pieces/show.html.erb</p>
+<h1>ピース集めの旅 交換</h1>
+<% if @user.profile_image? %>
+  <img src="<%= @user.profile_image.url %>" height=150 width=150 alt="<%= @user.name %>'s profile image" />
+<% else %>
+  <img src="/assets/default.png" height=150 width=150 alt="<%= @user.name %>'s profile image" />
+<% end %>
 <%= @user.name %>
+
+<% @pieces.each do |piece| %>  
+  <%= link_to 'index' do %>
+    <div>
+      <% if piece.image? %>
+        <img src="<%= piece.image %>" height=150 width=150 alt="<%= piece.name %>'s profile image" />
+      <% else %>
+        <img src="/assets/default.png" height=150 width=150 alt="<%= piece.name %>'s profile image" />
+      <% end %>
+      <%= piece.name %>
+    </div>
+  <% end %>
+  <%= link_to 'index', piece_path(id: piece.id) %>
+  
+<% end %>

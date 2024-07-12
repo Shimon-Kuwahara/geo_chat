@@ -134,6 +134,62 @@ Piece.create!(
   updated_at: Time.now
 )
 
+Piece.create!(
+  name: "taigei",
+  piece_set_id: 1,
+  location_x: 350,
+  location_y: 800,
+  size_x: 300,
+  size_y: 300,
+  image: '/assets/3.png',
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "igaku",
+  piece_set_id: 1,
+  location_x: 90,
+  location_y: 1090,
+  size_x: 190,
+  size_y: 190,
+  image: '/assets/4.png',
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "kasuga",
+  piece_set_id: 1,
+  location_x: 140,
+  location_y: 1430,
+  size_x: 80,
+  size_y: 160,
+  image: '/assets/6.png',
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+UserPiece.create!(
+  user_id: 1,
+  piece_id: 2,
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+UserPiece.create!(
+  user_id: 1,
+  piece_id: 3,
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+UserPiece.create!(
+  user_id: 1,
+  piece_id: 4,
+  created_at: Time.now,
+  updated_at: Time.now
+)
 
 UserPiece.create!(
   user_id: 2,

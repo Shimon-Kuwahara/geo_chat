@@ -1,13 +1,14 @@
-<h1>ピース集めの旅</h1>
+<h1>ピース集めの旅 ホーム</h1>
 <% @users.each do |user| %>
   <div>
-    <% if user.profile_image? %>
-      <img src="<%= user.profile_image.url %>" height=150 width=150 alt="<%= user.name %>'s profile image" />
-    <% else %>
-      <img src="/assets/default.png" height=150 width=150 alt="<%= user.name %>'s profile image" />
+    <%= link_to piece_path(user) do %>
+      <% if user.profile_image? %>
+        <img src="<%= user.profile_image.url %>" height=150 width=150 alt="<%= user.name %>'s profile image" />
+      <% else %>
+        <img src="/assets/default.png" height=150 width=150 alt="<%= user.name %>'s profile image" />
+      <% end %>
+      <div><%= user.name %></div>
     <% end %>
-    <%= user.name %>
-    <%= link_to '交換する', 'show' %>
   </div>
 <% end %>
 

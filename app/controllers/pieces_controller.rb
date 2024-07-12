@@ -12,7 +12,11 @@ class PiecesController < ApplicationController
     if @user.nil?
       redirect_to root_path, alert: "ユーザーが見つかりません"
     end
-    # pieces_id = UserPiece.where(user_id: @user.id).pluck(:piece_id)
-    # @pieces = Piece.where(piece_id: pieces_id)
+    @pieces = User.find_by(id: @user.id).pieces
+  end
+
+  def create
+    UerPiece.create(user_id: current_user.id, piece_id: params[:id])
+    link_to 'pieces/index'
   end
 end
