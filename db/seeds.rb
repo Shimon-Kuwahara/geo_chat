@@ -88,19 +88,20 @@ User.create!(
   updated_at: Time.now
 )
 
-ary = [User.find_by(user_id: "test_user").id, User.find_by(user_id: "amane2").id, User.find_by(user_id: "kirita2").id, User.find_by(user_id: "hinano2").id]
+ary = [User.find_by(user_id: 'test_user').id, User.find_by(user_id: 'amane2').id, User.find_by(user_id: 'kirita2').id,
+       User.find_by(user_id: 'hinano2').id]
 for user in ary do
   for matched_user in ary do
-    if user != matched_user then
-      Match.create!(
+    next unless user != matched_user
+
+    Match.create!(
       user_id: user,
       matched_user_id: matched_user,
       match_latitude: Faker::Address.latitude,
       match_longitude: Faker::Address.longitude,
       created_at: Time.now,
       updated_at: Time.now
-      )
-    end
+    )
   end
 end
 
