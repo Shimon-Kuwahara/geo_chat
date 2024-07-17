@@ -6,7 +6,7 @@ namespace :create_matches do
   end
 
   task test: :environment do
-    # Rails.logger.debug 'caaaaaaaaaaaaaaaaallllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll meee now!!!!'
+    # Rails.logger.debug 'call me now!!!'
   end
 
   EARTH_RADIUS_KM = 6378.137
@@ -19,7 +19,8 @@ namespace :create_matches do
       matched_user_ids = (user_ids - [user_id])
       matched_user_ids.each do |matched_user_id|
         matched_user = User.find(matched_user_id)
-        if cal_distance(user.latitude, user.longitude, matched_user.latitude, matched_user.longitude) < MATCH_DISTANCE
+        match_dis = (user.match_distance > matched_user.match_distance ? matched_user.match_distance : user.match_distance)
+        if cal_distance(user.latitude, user.longitude, matched_user.latitude, matched_user.longitude) < match_dis
           create_match(user_id, matched_user_id)
         end
       end
@@ -32,7 +33,7 @@ namespace :create_matches do
     x2_rad = deg2rad(x2)
     y2_rad = deg2rad(y2)
 
-    EARTH_RADIUS_KM * Math.acos(Math.sin(y1_rad) * Math.sin(y2_rad) + Math.cos(y1_rad) * Math.cos(y2_rad) * Math.cos(x2_rad - x1_rad))
+    EARTH_RADIUS_KM * Math.acos((Math.sin(y1_rad) * Math.sin(y2_rad)) + (Math.cos(y1_rad) * Math.cos(y2_rad) * Math.cos(x2_rad - x1_rad)))
   end
 
   def self.deg2rad(deg)

@@ -1,27 +1,32 @@
-<h2>ログイン</h2>
+<% unless user_signed_in? %>
+ <div class="centered-container">
+  <%= link_to 'Twitter連携', user_twitter_omniauth_authorize_path, method: :post, class: "btn btn-primary mb-2" %><br/>
+  <%= link_to 'Google連携', user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-success mb-4" %><br/>
 
-
-<%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
+  <h2 class="mb-3">ログイン</h2>
+  <%= form_with model: @user, url: user_session_path do |f| %>
+   <div class="field mb-2">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "email" %>
-  </div>
+   </div>
 
-  <div class="field">
+   <div class="field mb-2">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
+   <% if devise_mapping.rememberable? %>
+    <div class="field mb-2">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end %>
+   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+   <div class="actions">
+    <%= f.submit "Log in", class: "btn btn-secondary" %>
+   </div>
+  <% end %>
+ </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<!-- これはHTMLのコメントです -->

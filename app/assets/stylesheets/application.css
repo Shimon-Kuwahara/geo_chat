@@ -13,142 +13,237 @@
  *= require_tree .
  *= require_self
  */
- .chat-topbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #29b6f6;
-    color: #fff;
-    height: 50px;
-    padding: 0 20px;
-  }
-  
-  .chat-messages {
-    flex: 1;
-    overflow-y: scroll;
-    padding: 20px;
-  }
-  
-  .message {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  
-  .message-sender {
-    margin-bottom: 5px;
-    font-size: 0.8em;
-    color: #666;
-  }
-  
-  .message-body {
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
-  }
-  
-  .self .message-body {
-    align-self: flex-end;
-    background-color: #29b6f6;
-    color: #fff;
-  }
-  
-  .other .message-body {
-    align-self: flex-start;
-    background-color: #f5f5f5;
-    color: #333;
-  }
-  
-  .chat-form {
-    background-color: #f5f5f5;
-    padding: 20px;
-  }
-  
-  .chat-form form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .chat-form input[type="text"] {
-    flex: 1;
-    margin-right: 10px;
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-  }
-  
-  .chat-form input[type="submit"] {
-    flex: 0 0 auto;
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    background-color: #29b6f6;
-    color: #fff;
-    cursor: pointer;
-  }
 
-  body {
-    background-color: #f5f5f5;
-  }
-  header {
-    background-color: #00FFFF;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 24px;
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-  }
-  .button-wrapper {
-    margin-bottom: 10px;
-  }
-  .register-button {
-    margin-top: 20px;
-  }
-  .match-history {
-    margin: 20px 0;
-    text-align: center;
-  }
-  .match-history .row {
-    justify-content: center;
-  }
-  .match-history .col-6 {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .match-history .col-6 .icon {
-    height: 70px;
-    width: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 5px;
-  }
-  .footer-icons {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #ddd;
-    height: 70px;
-  }
-  .footer-icons .row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    height: 100%;
-  }
-  .footer-icons img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-  }
+ img {
+  object-fit: cover;
+}
+
+ .chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 81vh;
+  background-color: #deecf3;
+}
+
+.chat-topbar {
+  display: flex;
+  align-items: right;
+  justify-content: center;
+  color: #050000;
+  height: 50px;
+  padding: 0 20px;
+}
+
+.chat-partner-name {
+  font-size: 1.5em; 
+  font-weight: bold; 
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.message-sender {
+  margin-bottom: 5px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.message-body {
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.self .message-body {
+  align-self: flex-end;
+  background-color: #4ec4fa;
+  color: #fff;
+}
+
+.other .message-body {
+  align-self: flex-start;
+  background-color: #d5d4d4;
+  color: #333;
+}
+
+.chat-form {
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.chat-form form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-form input[type="text"] {
+  flex: 1;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e5f1;
+}
+
+.chat-form input[type="submit"] {
+  flex: 0 0 auto;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #f7ffa4;
+  color: #00ff08;
+  cursor: pointer;
+}
+
+
+.body {
+  background-color: #f5f5f5;
+  margin-bottom: 70px;
+}
+.header {
+  background-color: #34ecec;
+  color: #021a32;
+  text-align: left;
+  padding: 20px 20px;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.header-logout {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.6em;
+}
+
+.button-wrapper {
+  margin-bottom: 10px;
+}
+.register-button {
+  margin-top: 20px;
+}
+.footer-icons {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background-color: #ddd;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.footer-icons .row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  height: 100%;
+}
+.footer-icons img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  min-height: 70vh;
+  margin: 0; /* マージンを削除 */
+  padding-top: 20px; /* 上部のパディングを減らす */
+}
+
+.centered-container h1 {
+  margin-bottom: 20px; /* 下部のマージンを減らす */
+}
+
+.centered-container .btn,
+.centered-container form {
+  width: 100%;
+  max-width: 300px;
+}
+
+.centered-container form .actions {
+  display: flex;
+  justify-content: center;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.chat-icon img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.chat-details {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.chat-details h2 {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.unread-count {
+  position: relative;
+}
+
+.unread-number {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.centered-container {
+  text-align: center;
+}
+
+.matched-user {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.matched-user img {
+  border-radius: 50%;
+}
+
+.matched-user .btn {
+  width: 90%; 
+}

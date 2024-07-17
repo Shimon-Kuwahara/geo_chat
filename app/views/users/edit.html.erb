@@ -1,44 +1,57 @@
-<h1>プロフィール編集</h1>
+<% if current_user.id == @user.id %>
+  <h3>プロフィール編集</h3>
+  <%= form_for @user, html: { multipart: true } do |f| %>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= f.label :name, "名前" %></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :profile_image, "プロフィール画像" %></td>
+            <td><%= f.file_field :profile_image %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :age, "年齢" %></td>
+            <td><%= f.number_field :age %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :academic_year, "学年" %></td>
+            <td><%= f.text_field :academic_year %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :department, "学部" %></td>
+            <td><%= f.text_field :department %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :hometown, "出身地" %></td>
+            <td><%= f.text_field :hometown %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :profile, "プロフィール" %></td>
+            <td><%= f.text_area :profile %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :match_distance, "マッチング距離" %></td>
+            <td><%= f.number_field :match_distance, in: 1..100 %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <%= f.submit "更新", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <br />
+  <%= link_to '戻る', @user, class: "btn btn-secondary" %>
 
-<%= form_for @user do |f| %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :profile_image %><br>
-    <%= f.file_field :profile_image %>
-  </div>
-
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
-  </div>
-
-  <div class="field">
-    <%= f.label :academic_year %><br>
-    <%= f.text_field :academic_year %>
-  </div>
-
-  <div class="field">
-    <%= f.label :department %><br>
-    <%= f.text_field :department %>
-  </div>
-
-  <div class="field">
-    <%= f.label :hometown %><br>
-    <%= f.text_field :hometown %>
-  </div>
-
-  <div class="field">
-    <%= f.label :profile %><br>
-    <%= f.text_area :profile %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "更新" %>
-  </div>
+<% else %>
+  <h1>あなたのアカウントではありません</h1>
 <% end %>
-
-<%= link_to '戻る', @user %>
