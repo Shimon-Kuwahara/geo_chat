@@ -38,5 +38,5 @@
 /.solargraph.yml
 /.rubocop_todo.yml
 /.rubocop.yml
-
+.rubocop.yml
 /public/uploads

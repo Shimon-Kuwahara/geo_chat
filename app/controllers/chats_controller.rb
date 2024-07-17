@@ -5,6 +5,11 @@ class ChatsController < ApplicationController
         user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)#その中にチャットする相手とのルームがあるか確認
         unless user_rooms.nil?#ユーザールームがある場合
             @room = user_rooms.room#変数@roomにユーザー（自分と相手）と紐づいているroomを代入
+            unreadchats=Chat.where(user_id:@user.id, room_id:user_rooms.room_id, unread:true) #未読のやつ取得
+            unreadchats.each do |unreadchat| #既読化
+                unreadchat.unread=false
+                unreadchat.save!
+            end
         else#ユーザールームが無かった場合
             @room = Room.new#新しくRoomを作る
             @room.save#そして保存
@@ -13,6 +18,7 @@ class ChatsController < ApplicationController
         end
         @chats = @room.chats#チャットの一覧
         @chat = Chat.new(room_id: @room.id)#チャットの投稿
+        @chat_partner_name = @user.name # チャット相手の名前を設定
     end
 
     def create

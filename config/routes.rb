@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get '/myrooms', to: 'rooms#show'
   get '/games', to: 'games#index'
+  post 'users/update', to: 'users#update_location'
+  post 'users/init', to: 'users#init_location'
 
   resources :chats, only: %i[show create]
   resources :users
