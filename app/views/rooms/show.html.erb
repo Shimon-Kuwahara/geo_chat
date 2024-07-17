@@ -1,20 +1,31 @@
-<h1>チャット一覧</h1>
-<% @rooms.each do |room| %>
-  <% opponent_rooms = UserRoom.where(room_id: room.room_id).where.not(user_id: current_user.id) %>
-  <% opponent_rooms.each do |opponent_room| %>
-    <% opponent_user = User.find(opponent_room.user_id) %>
-    <% number_of_unread = Chat.where(room_id:room.room_id, user_id:opponent_user.id, unread:true).length %>
-    <
-    <h2><%= User.find(opponent_room.user_id).name %></h2>
-    <% if opponent_user.profile_image? %>
-    <img src="<%= opponent_user.profile_image.url %>" height=150 width=150 alt="<%= opponent_user.name %>'s profile image" />
-    <%else%>
-    <img src="/assets/default.png" height=150 width=150 alt="<%= opponent_user.name %>'s profile image" />
-    <%end%>
-    <p><%= link_to 'チャットを始める', chat_path(opponent_user.id), class: "ml-3" %></p>
-    <% if number_of_unread >0 %>
-     <img src="/assets/midokucircle.png" height=15 width=15> 
-    <%=number_of_unread%>
-    <%end%>
+<h2 style="margin-left: 0.5em;">チャット一覧</h2>
+<div class="chat-list">
+  <% @rooms.each do |room| %>
+    <% opponent_rooms = UserRoom.where(room_id: room.room_id).where.not(user_id: current_user.id) %>
+    <% opponent_rooms.each do |opponent_room| %>
+      <% opponent_user = User.find(opponent_room.user_id) %>
+      <% number_of_unread = Chat.where(room_id:room.room_id, user_id:opponent_user.id, unread:true).length %>
+
+      <%= link_to chat_path(opponent_user.id), class: 'chat-item-link' do %>
+        <div class="chat-item">
+          <div class="user-icon">
+            <% if opponent_user.profile_image? %>
+              <img src="<%= opponent_user.profile_image.url %>" alt="<%= opponent_user.name %>'s profile image" />
+            <% else %>
+              <img src="/assets/default.png" alt="<%= opponent_user.name %>'s profile image" />
+            <% end %>
+          </div>
+          <div class="user-info">
+            <h2><%= opponent_user.name %></h2>
+          </div>
+          <div class="unread-count">
+            <% if number_of_unread > 0 %>
+              <div class="unread-badge"><%= number_of_unread %></div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <hr>
+    <% end %>
   <% end %>
-<% end %>
+</div>
