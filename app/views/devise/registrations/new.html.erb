@@ -1,71 +1,76 @@
-<h2>新規登録</h2>
+<h2 style="margin-left: 0.5em;">新規登録</h2>
 
-<%= form_with model: @user, url: user_registration_path do |f| %>
+<%= form_with model: @user, url: user_registration_path, html: { multipart: true } do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+   <div class="table-responsive">
+     <table class="table table-bordered">
+       <thead>
+         <tr>
+           <th>項目</th>
+           <th>内容</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td><%= f.label :name, "名前" %></td>
+           <td><%= f.text_field :name %></td>
+         </tr>
+         <tr>
+           <td><%= f.label :profile_image, "プロフィール画像" %></td>
+           <td><%= f.file_field :profile_image %></td>
+         </tr>
+         <tr>
+           <td><%= f.label :age, "年齢" %></td>
+           <td><%= f.number_field :age %></td>
+         </tr>
+         <tr>
+           <td><%= f.label :academic_year, "学年" %></td>
+           <td><%= f.text_field :academic_year %></td>
+         </tr>
+         <tr>
+           <td><%= f.label :department, "学部" %></td>
+           <td><%= f.text_field :department %></td>
+         </tr>
+         <tr>
+           <td><%= f.label :hometown, "出身地" %></td>
+           <td><%= f.text_field :hometown %></td>
+         </tr>
+         <tr>
+           <td><%= f.label :profile, "プロフィール" %></td>
+           <td><%= f.text_area :profile %></td>
+         </tr>
+
+         <% if @sns_id.present? %>
+           <%= hidden_field_tag :sns_auth, true %>
+           <%= hidden_field_tag :user_id, @user_id %>
+         <% else %>
+         <tr>
+           <td><%= f.label :email, "メールアドレス" %></td>
+           <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+         </tr>
+         <tr>
+           <td><%= f.label :password, "パスワード" %></td>
+           <td>
+             <% if @minimum_password_length %>
+               <em>(<%= @minimum_password_length %> 文字以上)</em><br />
+             <% end %>
+             <%= f.password_field :password, autocomplete: "new-password" %>
+           </td>
+         </tr>
+         <tr>
+           <td><%= f.label :password_confirmation, "パスワード確認" %></td>
+           <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+         </tr>
+         <% end %>
+       </tbody>
+     </table>
+   </div>
+
+  <div class="text-center">
+   <div class="actions">
+     <%= f.submit "作成", class: "btn btn-primary" %>
+   </div>
   </div>
 
-  <div class="field">
-  <%= f.label :profile_image %><br>
-  <%= f.file_field :profile_image %>
-</div>
-
-<div class="field">
-  <%= f.label :age %><br>
-  <%= f.number_field :age %>
-</div>
-
-<div class="field">
-  <%= f.label :academic_year %><br>
-  <%= f.text_field :academic_year %>
-</div>
-
-<div class="field">
-  <%= f.label :department %><br>
-  <%= f.text_field :department %>
-</div>
-
-<div class="field">
-  <%= f.label :hometown %><br>
-  <%= f.text_field :hometown %>
-</div>
-
-<div class="field">
-  <%= f.label :profile %><br>
-  <%= f.text_area :profile %>
-</div>
-
-  <%if @sns_id.present? %>
-   <%= hidden_field_tag :sns_auth, true %>
-   <%= hidden_field_tag :user_id, @user_id %>
-  <% else %>
-
-  <div class="field">
-  <%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "作成" %>
-  </div>
 <% end %>
-
-

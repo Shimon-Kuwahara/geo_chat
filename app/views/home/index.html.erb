@@ -1,5 +1,5 @@
 <html>
- <div class="centered-container">
+<div class="text-center">
   <h1>マッチ履歴</h1>
   <head>
    <title>GeoChat</title>
@@ -11,9 +11,10 @@
    <%= javascript_importmap_tags %>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
- </div>
+</div>
 
   <body>
+   <div class="centered-container">
     <div class="container">
      <div class="row">
       <% @matches.each do |match| %>
@@ -54,6 +55,9 @@
         // window.location.reload(true);
        });
       </script>
+     </div>
+    </div>
+   </div>
 
    <script src="js/bootstrap.min.js"></script>
   </body>

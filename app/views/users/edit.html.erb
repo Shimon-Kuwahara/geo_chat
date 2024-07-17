@@ -1,5 +1,5 @@
 <% if current_user.id == @user.id %>
-  <h3>プロフィール編集</h3>
+  <h3 style="margin-left: 0.5em;">プロフィール編集</h3>
   <%= form_for @user, html: { multipart: true } do |f| %>
     <div class="table-responsive">
       <table class="table table-bordered">
@@ -45,12 +45,17 @@
         </tbody>
       </table>
     </div>
-    <div class="actions">
-      <%= f.submit "更新", class: "btn btn-primary" %>
+
+    <div class="text-center">
+     <div class="actions">
+       <%= f.submit "更新", class: "btn btn-primary" %>
+     </div>
     </div>
   <% end %>
   <br />
-  <%= link_to '戻る', @user, class: "btn btn-secondary" %>
+  <div class="text-center">
+   <%= link_to '戻る', @user, class: "btn btn-secondary" %>
+  </div>
 
 <% else %>
   <h1>あなたのアカウントではありません</h1>
