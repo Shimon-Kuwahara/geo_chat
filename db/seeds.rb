@@ -11,7 +11,7 @@ User.create!(
   hometown: 'Toyama',
   latitude: Faker::Address.latitude,
   longitude: Faker::Address.longitude,
-  email: 'testuser@example.com',
+  email: Faker::Internet.free_email,
   password: 'foobar',
   password_confirmation: 'foobar',
   created_at: Time.now,
