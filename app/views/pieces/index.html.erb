@@ -1,25 +1,29 @@
-<h1>ピース集めの旅 ホーム</h1>
-<p>すれ違った人からピースを集め, 筑波大学を完成させよう！</p>
+<h1 style="margin-left: 0.5em;">ピース集めの旅 ホーム</h1>
+<p style="margin-left: 1.5em;">すれ違った人からピースを集め, 筑波大学を完成させよう！</p>
 
 <% if User.find_by(id: current_user.id).pieces.empty? %>
   <% new_piece = Piece.all.sample(1).first %>
-  <h4>最初のピース「<%= new_piece.name %>」をゲットしました！</h4>
+  <h4 style="margin-left: 1.0em;">最初のピース「<%= new_piece.name %>」をゲットしました！</h4>
   <% UserPiece.create(user_id: current_user.id, piece_id: new_piece.id) %>
   <% @pieces = [new_piece] %>
 <% end %>
 
-<% @users.each do |user| %>
-  <div>
-    <%= link_to piece_path(user) do %>
-      <% if user.profile_image? %>
-        <img src="<%= user.profile_image.url %>" height=150 width=150 alt="<%= user.name %>'s profile image" />
-      <% else %>
-        <img src="/assets/default.png" height=150 width=150 alt="<%= user.name %>'s profile image" />
-      <% end %>
-      <div><%= user.name %></div>
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-6 col-md-3 text-center">
+        <%= link_to piece_path(user) do %>
+          <% if user.profile_image? %>
+            <%= image_tag user.profile_image.url, height: 150, width: 150, alt: "#{user.name}'s profile image" %>
+          <% else %>
+            <%= image_tag asset_path("default.png"), height: 150, width: 150, alt: "#{user.name}'s default image" %>
+          <% end %>
+          <div><%= user.name %></div>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
+</div>
 
 <div data-controller="map" data-map-pieces="<%= @pieces.to_json %>">
   <canvas data-map-target="canvas" id="canvas" width="1000" height="2000"></canvas>

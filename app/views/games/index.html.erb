@@ -1,2 +1,7 @@
-<h1>ゲーム一覧</h1>
-<%= link_to 'ピース集め', pieces_path %>
+<h1 style="margin-left: 0.5em;">ゲーム一覧</h1>
+<div class="text-center game-icon">
+ <%= link_to pieces_path do %>
+   <%= image_tag asset_path("pieces_icon.png"), height: 150, width: 150, alt: "pieces image" %>
+   <div>ピース集めの旅</div>
+ <% end %>
+</div>
