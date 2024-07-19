@@ -72,23 +72,6 @@ User.create!(
   updated_at: Time.now
 )
 
-ary = [User.find_by(user_id: 'test_user').id, User.find_by(user_id: 'amane2').id, User.find_by(user_id: 'kirita2').id,
-       User.find_by(user_id: 'hinano2').id]
-for user in ary do
-  for matched_user in ary do
-    next unless user != matched_user
-
-    Match.create!(
-      user_id: user,
-      matched_user_id: matched_user,
-      match_latitude: Faker::Address.latitude,
-      match_longitude: Faker::Address.longitude,
-      created_at: Time.now,
-      updated_at: Time.now
-    )
-  end
-end
-
 PieceSet.create!(
   name: "University of Tsukuba",
   created_at: Time.now,
@@ -150,7 +133,7 @@ UserPiece.create!(
   updated_at: Time.now
 )
 
-100.times do |i|
+10.times do |i|
   User.create!(
     name: Faker::Name.name,
     user_id: "user_#{i + 1}",
@@ -171,7 +154,7 @@ UserPiece.create!(
 end
 
 user_ids = User.pluck(:id)
-104.times do
+14.times do
   user_id = 1
   matched_user_id = (user_ids - [user_id]).sample # 自己マッチを避ける
   Match.create!(
@@ -183,15 +166,16 @@ user_ids = User.pluck(:id)
     updated_at: Time.now
   )
 end
-104.times do
-  user_id = 2
-  matched_user_id = (user_ids - [user_id]).sample # 自己マッチを避ける
-  Match.create!(
-    user_id:,
-    matched_user_id:,
-    match_latitude: Faker::Address.latitude,
-    match_longitude: Faker::Address.longitude,
-    created_at: Time.now,
-    updated_at: Time.now
-  )
-end
+
+# 14.times do
+#   user_id = 2
+#   matched_user_id = (user_ids - [user_id]).sample # 自己マッチを避ける
+#   Match.create!(
+#     user_id:,
+#     matched_user_id:,
+#     match_latitude: Faker::Address.latitude,
+#     match_longitude: Faker::Address.longitude,
+#     created_at: Time.now,
+#     updated_at: Time.now
+#   )
+# end
