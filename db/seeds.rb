@@ -4,7 +4,7 @@ User.create!(
   name: 'shimon',
   user_id: 'test_user',
   profile: 'This is a test user.',
-  profile_image: Faker::Avatar.image(slug: 'test_user', size: '100x100'),
+  profile_image: Faker::Avatar.image(slug: 'test', size: '100x100'),
   age: 20,
   academic_year: '3',
   department: 'Computer Science',
@@ -153,19 +153,19 @@ UserPiece.create!(
   )
 end
 
-user_ids = User.pluck(:id)
-14.times do
-  user_id = 1
-  matched_user_id = (user_ids - [user_id]).sample # 自己マッチを避ける
-  Match.create!(
-    user_id:,
-    matched_user_id:,
-    match_latitude: Faker::Address.latitude,
-    match_longitude: Faker::Address.longitude,
-    created_at: Time.now,
-    updated_at: Time.now
-  )
-end
+# user_ids = User.pluck(:id)
+# 14.times do
+#   user_id = 1
+#   matched_user_id = (user_ids - [user_id]).sample # 自己マッチを避ける
+#   Match.create!(
+#     user_id:,
+#     matched_user_id:,
+#     match_latitude: Faker::Address.latitude,
+#     match_longitude: Faker::Address.longitude,
+#     created_at: Time.now,
+#     updated_at: Time.now
+#   )
+# end
 
 # 14.times do
 #   user_id = 2
