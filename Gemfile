@@ -45,7 +45,7 @@ group :test do
 end
 
 group :production do
-  gem "pg", "~> 1.4"
+  gem 'pg', '~> 1.4'
 end
 
 # group :production do
@@ -62,15 +62,14 @@ end
 gem 'devise'
 gem 'geocoder'
 gem 'geolocation'
-gem 'whenever', require: false
 gem 'rubocop', require: false
+gem 'whenever', require: false
 
-gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
 
 # omniauth認証はCSRF脆弱性が指摘されているため対策としてインストール
 gem 'omniauth-rails_csrf_protection'
 # 環境変数を管理するためインストール(vim ~/.zshrcで定義することも可能)
-gem 'dotenv-rails'
-
 gem 'carrierwave', '~> 2.0'
+gem 'dotenv-rails'

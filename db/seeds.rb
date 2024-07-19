@@ -54,23 +54,23 @@ User.create!(
   updated_at: Time.now
 )
 
-# User.create!(
-#   name: 'hinano',
-#   user_id: 'hinano2',
-#   profile: 'This is a test user.',
-#   profile_image: Faker::Avatar.image(slug: 'hinano', size: '100x100'),
-#   age: 21,
-#   academic_year: '3',
-#   department: 'Computer Science',
-#   hometown: 'ibaraki',
-#   latitude: Faker::Address.latitude,
-#   longitude: Faker::Address.longitude,
-#   email: Faker::Internet.free_email,
-#   password: 'foobar04', # ここでパスワードを設定します
-#   password_confirmation: 'foobar04', # パスワード確認
-#   created_at: Time.now,
-#   updated_at: Time.now
-# )
+User.create!(
+  name: 'hinano',
+  user_id: 'hinano2',
+  profile: 'This is a test user.',
+  profile_image: Faker::Avatar.image(slug: 'hinano', size: '100x100'),
+  age: 21,
+  academic_year: '3',
+  department: 'Computer Science',
+  hometown: 'ibaraki',
+  latitude: Faker::Address.latitude,
+  longitude: Faker::Address.longitude,
+  email: Faker::Internet.free_email,
+  password: 'foobar04', # ここでパスワードを設定します
+  password_confirmation: 'foobar04', # パスワード確認
+  created_at: Time.now,
+  updated_at: Time.now
+)
 
 PieceSet.create!(
   name: "University of Tsukuba",
