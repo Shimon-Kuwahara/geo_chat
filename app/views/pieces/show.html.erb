@@ -1,26 +1,32 @@
-<h1>ピース集めの旅 交換</h1>
-<% if @user.profile_image? %>
-  <img src="<%= @user.profile_image.url %>" height=150 width=150 alt="<%= @user.name %>'s profile image" />
-<% else %>
-  <img src="/assets/default.png" height=150 width=150 alt="<%= @user.name %>'s profile image" />
-<% end %>
-<%= @user.name %>
+<h1 style="margin-left: 0.5em;">ピース集めの旅 交換</h1>
+<div class="text-center game-icon">
+  <% if @user.profile_image? %>
+    <img src="<%= @user.profile_image.url %>" height=150 width=150 alt="<%= @user.name %>'s profile image" />
+  <% else %>
+    <img src="/assets/default.png" height=150 width=150 alt="<%= @user.name %>'s profile image" />
+  <% end %>
 
-<p><%= link_to '交換をやめる', pieces_path %></p>
+  <div class="spacing-large"></div>
 
-<% if @pieces.empty? %>
-  <p>交換できるピースがありません</p>
-<% else %>
-  <% @pieces.each do |piece| %>  
-    <%= link_to new_piece_path(piece_id: piece.id, user_id: @user.id) do %>
-      <div>
-        <% if piece.image? %>
-          <img src="<%= piece.image %>" height=150 width=150 alt="<%= piece.name %>'s profile image" />
-        <% else %>
-          <img src="/assets/default.png" height=150 width=150 alt="<%= piece.name %>'s profile image" />
-        <% end %>
-        <%= piece.name %>
-      </div>
+  <%= @user.name %>
+
+  <% if @pieces.empty? %>
+    <p>交換できるピースがありません</p>
+  <% else %>
+    <h3 class="spacing-top">交換できるピース</h3>
+    <% @pieces.each do |piece| %>
+      <%= link_to new_piece_path(piece_id: piece.id, user_id: @user.id) do %>
+        <div class="spacing-between piece-container">
+          <% if piece.image? %>
+            <img src="<%= piece.image %>" height=150 width=150 alt="<%= piece.name %>'s profile image" />
+          <% else %>
+            <img src="/assets/default.png" height=150 width=150 alt="<%= piece.name %>'s profile image" />
+          <% end %>
+          <div class="piece-name"><%= piece.name %></div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+
+  <p class="spacing-top"><%= link_to '交換をやめる', pieces_path, class: "btn btn-outline-primary" %></p> <!-- ボタンの上にスペースを追加 -->
+</div>

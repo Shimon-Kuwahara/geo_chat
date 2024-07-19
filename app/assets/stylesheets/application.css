@@ -292,3 +292,33 @@
   width: 30px;
   height: 30px;
 }
+
+.game-icon {
+  margin-top: 40px; 
+}
+
+.spacing-large {
+  margin-bottom: 5px;
+}
+
+.spacing-top {
+  margin-top: 40px;
+}
+
+.spacing-between {
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.piece-container {
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  border-radius: 5px; 
+  margin-bottom: 20px; 
+  display: inline-block; 
+  width: 180px; 
+}
+
+.piece-name {
+  margin-top: 10px;
+}
