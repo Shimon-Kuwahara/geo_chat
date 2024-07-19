@@ -54,23 +54,23 @@ User.create!(
   updated_at: Time.now
 )
 
-User.create!(
-  name: 'hinano',
-  user_id: 'hinano2',
-  profile: 'This is a test user.',
-  profile_image: Faker::Avatar.image(slug: 'hinano', size: '100x100'),
-  age: 21,
-  academic_year: '3',
-  department: 'Computer Science',
-  hometown: 'ibaraki',
-  latitude: Faker::Address.latitude,
-  longitude: Faker::Address.longitude,
-  email: Faker::Internet.free_email,
-  password: 'foobar04', # ここでパスワードを設定します
-  password_confirmation: 'foobar04', # パスワード確認
-  created_at: Time.now,
-  updated_at: Time.now
-)
+# User.create!(
+#   name: 'hinano',
+#   user_id: 'hinano2',
+#   profile: 'This is a test user.',
+#   profile_image: Faker::Avatar.image(slug: 'hinano', size: '100x100'),
+#   age: 21,
+#   academic_year: '3',
+#   department: 'Computer Science',
+#   hometown: 'ibaraki',
+#   latitude: Faker::Address.latitude,
+#   longitude: Faker::Address.longitude,
+#   email: Faker::Internet.free_email,
+#   password: 'foobar04', # ここでパスワードを設定します
+#   password_confirmation: 'foobar04', # パスワード確認
+#   created_at: Time.now,
+#   updated_at: Time.now
+# )
 
 PieceSet.create!(
   name: "University of Tsukuba",
@@ -133,25 +133,25 @@ UserPiece.create!(
   updated_at: Time.now
 )
 
-10.times do |i|
-  User.create!(
-    name: Faker::Name.name,
-    user_id: "user_#{i + 1}",
-    profile: Faker::Lorem.paragraph(sentence_count: 3),
-    profile_image: Faker::Avatar.image(slug: "user_#{i + 1}", size: '100x100'),
-    age: rand(18..25),
-    academic_year: rand(1..4).to_s,
-    department: Faker::Educator.subject,
-    hometown: Faker::Address.city,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
-    email: Faker::Internet.unique.email,
-    password: 'password123',
-    password_confirmation: 'password123', # パスワード確認
-    created_at: Time.now,
-    updated_at: Time.now
-  )
-end
+# 10.times do |i|
+#   User.create!(
+#     name: Faker::Name.name,
+#     user_id: "user_#{i + 1}",
+#     profile: Faker::Lorem.paragraph(sentence_count: 3),
+#     profile_image: Faker::Avatar.image(slug: "user_#{i + 1}", size: '100x100'),
+#     age: rand(18..25),
+#     academic_year: rand(1..4).to_s,
+#     department: Faker::Educator.subject,
+#     hometown: Faker::Address.city,
+#     latitude: Faker::Address.latitude,
+#     longitude: Faker::Address.longitude,
+#     email: Faker::Internet.unique.email,
+#     password: 'password123',
+#     password_confirmation: 'password123', # パスワード確認
+#     created_at: Time.now,
+#     updated_at: Time.now
+#   )
+# end
 
 # user_ids = User.pluck(:id)
 # 14.times do
