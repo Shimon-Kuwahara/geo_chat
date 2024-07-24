@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/games', to: 'games#index'
   post 'users/update', to: 'users#update_location'
   post 'users/init', to: 'users#init_location'
+  post 'home/create_matches', to: 'home#create_matches'
 
   resources :chats, only: %i[show create]
   resources :users

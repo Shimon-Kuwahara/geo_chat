@@ -1,44 +1,53 @@
+<!DOCTYPE html>
 <html>
-<div class="text-center">
-  <h1>マッチ履歴</h1>
   <head>
-   <title>GeoChat</title>
-   <meta name="viewport" content="width=device-width,initial-scale=1">
-   <%= csrf_meta_tags %>
-   <%= csp_meta_tag %>
+    <title>GeoChat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-   <%= javascript_importmap_tags %>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
-</div>
-
   <body>
-   <div class="centered-container">
-    <div class="container">
-     <div class="row">
-      <% @matches.each do |match| %>
-      <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
-       <div class="col-6 col-lg-3 mb-4">
-        <div class="matched-user text-center p-2 border">
-        <% if matched_user.profile_image? %>
-         <img src="<%= matched_user.profile_image.url %>" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
-        <% else %>
-         <img src="/assets/default.png" height=150 width=150 alt="<%= matched_user.name %>'s profile image" />
-        <% end %>
-         <div><%= matched_user.name %></div>
-         <div>マッチ時間: <%= formatted_time(match.created_at) %></div>
-         <%= link_to 'プロフィールを見る', user_path(matched_user), class: "btn btn-info ml-1" %>
-        </div>
-       </div>
-      <% end %>
-      <%= form_with url: users_update_path, method: :post, id: "location_form" do %>
-        <%= hidden_field_tag :latitude %>
-        <%= hidden_field_tag :longitude %>
-      <% end %>
+    <div class="text-center">
+      <h1>マッチ履歴</h1>
+    </div>
+    <% if current_user.id == 1 %>
+      <h3>管理者用マッチングボタン</h3>
+      <%= button_to 'Create Matches', home_create_matches_path, method: :post %>
+    <% end %>
 
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
+    <div class="centered-container">
+      <div class="container">
+        <div class="row">
+          <% @matches.each do |match| %>
+            <% matched_user = match.user_id == current_user.id ? User.find(match.matched_user_id) : User.find(match.user_id) %>
+            <div class="col-6 col-lg-3 mb-4">
+              <div class="matched-user text-center p-2 border">
+                <% if matched_user.profile_image? %>
+                  <%= image_tag matched_user.profile_image.url, height: 150, width: 150, alt: "#{matched_user.name}'s profile image" %>
+                <% else %>
+                  <%= image_tag asset_path("default.png"), height: 150, width: 150, alt: "#{matched_user.name}'s profile image" %>
+                <% end %>
+                <div><%= matched_user.name %></div>
+                <div>マッチ時間: <%= formatted_time(match.created_at) %></div>
+                <%= link_to 'プロフィールを見る', user_path(matched_user), class: "btn btn-info ml-1" %>
+              </div>
+            </div>
+          <% end %>
+
+          <%= form_with url: users_update_path, method: :post, id: "location_form" do %>
+            <%= hidden_field_tag :latitude %>
+            <%= hidden_field_tag :longitude %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             document.getElementsByName("latitude")[0].value = position.coords.latitude;
@@ -51,14 +60,9 @@
         } else {
           alert("Geolocation is not supported by this browser.");
         }
-        // キャッシュを無効にしてページをリロード
-        // window.location.reload(true);
-       });
-      </script>
-     </div>
-    </div>
-   </div>
+      });
+    </script>
 
-   <script src="js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>
