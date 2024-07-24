@@ -6,7 +6,7 @@ namespace :create_matches do
   end
 
   task test: :environment do
-    # Rails.logger.debug 'call me now!!!'
+    p 'call me now!!!'
   end
 
   EARTH_RADIUS_KM = 6378.137
