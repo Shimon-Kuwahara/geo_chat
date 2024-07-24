@@ -73,13 +73,13 @@ User.create!(
 )
 
 PieceSet.create!(
-  name: "University of Tsukuba",
+  name: 'University of Tsukuba',
   created_at: Time.now,
   updated_at: Time.now
 )
 
 Piece.create!(
-  name: "本学",
+  name: '本学',
   piece_set_id: 1,
   location_x: 420,
   location_y: 370,
@@ -91,7 +91,7 @@ Piece.create!(
 )
 
 Piece.create!(
-  name: "体育芸術エリア",
+  name: '体育芸術エリア',
   piece_set_id: 1,
   location_x: 350,
   location_y: 800,
@@ -103,7 +103,7 @@ Piece.create!(
 )
 
 Piece.create!(
-  name: "医学エリア",
+  name: '医学エリア',
   piece_set_id: 1,
   location_x: 90,
   location_y: 1090,
@@ -115,7 +115,7 @@ Piece.create!(
 )
 
 Piece.create!(
-  name: "春日エリア",
+  name: '春日エリア',
   piece_set_id: 1,
   location_x: 140,
   location_y: 1430,
@@ -129,6 +129,24 @@ Piece.create!(
 UserPiece.create!(
   user_id: 1,
   piece_id: 1,
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Match.create!(
+  user_id: 1,
+  matched_user_id: 2,
+  match_latitude: Faker::Address.latitude,
+  match_longitude: Faker::Address.longitude,
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Match.create!(
+  user_id: 2,
+  matched_user_id: 1,
+  match_latitude: Faker::Address.latitude,
+  match_longitude: Faker::Address.longitude,
   created_at: Time.now,
   updated_at: Time.now
 )
