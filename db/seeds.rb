@@ -1,7 +1,7 @@
 require 'faker'
 
 User.create!(
-  name: '管理者',
+  name: 'shimon',
   user_id: 'test_user',
   profile: 'This is a test user.',
   profile_image: Faker::Avatar.image(slug: 'test', size: '100x100'),
