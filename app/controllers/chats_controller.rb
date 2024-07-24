@@ -25,7 +25,7 @@ class ChatsController < ApplicationController
     @chat = current_user.chats.new(chat_params)
     @room = @chat.room
     @chats = @room.chats
-    render :validator if @chat.save
+    render :validator unless @chat.save
   end
 
   private
