@@ -26,6 +26,8 @@ class ChatsController < ApplicationController
     @room = @chat.room
     @chats = @room.chats
     render :validator unless @chat.save
+    @opponent_user_id = UserRoom.find(id: @room.id).where.not(user_id: current_user.id).id
+    redirect_to chat_path(@opponent_user_id), notice: 'チャットが送信されました。'
   end
 
   private
