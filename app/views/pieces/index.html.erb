@@ -21,49 +21,7 @@
   </div>
 <% end %>
 
-<div class="map" id="map" ></div>
-<script>
-  let historicalOverlay;
+<% console %>
 
-  function initMap() {
-    function Grid(size) {
-      this.tileSize = size;
-    }
-
-    Grid.prototype.maxZoom = 12;
-    Grid.prototype.minZoom = 8;
-    Grid.prototype.getTile = function(coord, zoom, ownerDocument) {
-      var div = ownerDocument.createElement('div');
-      div.innerHTML = coord;
-      div.style.width = this.tileSize.width + 'px';
-      div.style.height = this.tileSize.height + 'px';
-      div.style.borderStyle = 'solid';
-      div.style.borderWidth = '1px';
-      return div;
-    };
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 9,
-      center: {lat: 0, lng: 0},
-      mapTypeId: 'custom_type',
-      streetViewControl: false,
-      mapTypeControl: false,
-    });
-
-    const imageBounds = {
-      north: 0.75,
-      south: 0,
-      east: 0.5,
-      west: 0,
-    };
-
-    map.mapTypes.set('custom_type', new Grid(new google.maps.Size(256, 256)));
-    historicalOverlay = new google.maps.GroundOverlay(
-      "/assets/2.png",
-      imageBounds
-    );
-    historicalOverlay.setMap(map);
-  }
-  window.initMap = initMap;
-</script>
+<div class="map" id="map" data-controller="map" data-map-pieces="<%= @pieces.to_json %>" ></div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAToqnvm_22X0zWbCJfoRyuOLg94PLYLR8&callback=initMap" async defer></script>

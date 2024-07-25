@@ -9,6 +9,7 @@
 <p><%= link_to '交換をやめる', pieces_path %></p>
 
 <% if @pieces.empty? %>
+  <% Exchange.create(user_id: current_user.id, exchanging_user_id: @user.id) %>
   <p>交換できるピースがありません</p>
 <% else %>
   <% @pieces.each do |piece| %>  

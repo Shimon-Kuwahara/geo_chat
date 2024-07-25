@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_05_071558) do
-
+ActiveRecord::Schema[7.0].define(version: 2024_07_23_145811) do
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
@@ -48,10 +47,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_05_071558) do
   create_table "pieces", force: :cascade do |t|
     t.string "name"
     t.integer "piece_set_id"
-    t.integer "location_x"
-    t.integer "location_y"
-    t.integer "size_x"
-    t.integer "size_y"
+    t.integer "location_north"
+    t.integer "location_south"
+    t.integer "location_east"
+    t.integer "location_west"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
