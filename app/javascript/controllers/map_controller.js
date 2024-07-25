@@ -16,7 +16,7 @@ export default class extends Controller {
       this.tileSize = size;
     }
     
-    Grid.prototype.maxZoom = 17;
+    Grid.prototype.maxZoom = 18;
     Grid.prototype.minZoom = 14;
     Grid.prototype.getTile = function(coord, zoom, ownerDocument) {
       var div = ownerDocument.createElement('div');
@@ -51,5 +51,18 @@ export default class extends Controller {
       }
     );
     historicalOverlay.setMap(map);
+
+    this.pieces.forEach(piece => {
+      historicalOverlay = new google.maps.GroundOverlay(
+        piece.image,
+        {
+          north: Number(piece.location_north),
+          south: Number(piece.location_south),
+          east: Number(piece.location_east),
+          west: Number(piece.location_west),
+        }
+      );
+      historicalOverlay.setMap(map);
+    });
   }
 }
