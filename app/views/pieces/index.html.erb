@@ -22,4 +22,4 @@
 <% end %>
 
 <div class="map" id="map" data-controller="map" data-map-pieces="<%= @pieces.to_json %>" ></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAToqnvm_22X0zWbCJfoRyuOLg94PLYLR8&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
