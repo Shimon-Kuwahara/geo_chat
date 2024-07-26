@@ -293,6 +293,13 @@
   height: 30px;
 }
 
+.map {
+  width: 70%;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+
 .game-icon {
   margin-top: 40px; 
 }

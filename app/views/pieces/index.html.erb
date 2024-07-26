@@ -25,6 +25,5 @@
   </div>
 </div>
 
-<div data-controller="map" data-map-pieces="<%= @pieces.to_json %>">
-  <canvas data-map-target="canvas" id="canvas" width="1000" height="2000"></canvas>
-</div>
+<div class="map" id="map" data-controller="map" data-map-pieces="<%= @pieces.to_json %>" ></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>

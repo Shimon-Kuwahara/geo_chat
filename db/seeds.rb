@@ -79,56 +79,181 @@ PieceSet.create!(
 )
 
 Piece.create!(
-  name: '本学',
+  name: "第一エリア",
   piece_set_id: 1,
-  location_x: 420,
-  location_y: 370,
-  size_x: 250,
-  size_y: 375,
-  image: '/assets/2.png',
+  location_north: 36.109821,
+  location_south: 36.106622,
+  location_east: 140.103903,
+  location_west: 140.100169,
+  image: "/assets/pieces/area1.png",
   created_at: Time.now,
   updated_at: Time.now
 )
 
 Piece.create!(
-  name: '体育芸術エリア',
+  name: "第二エリア",
   piece_set_id: 1,
-  location_x: 350,
-  location_y: 800,
-  size_x: 300,
-  size_y: 300,
-  image: '/assets/3.png',
+  location_north: 36.113230,
+  location_south: 36.109595,
+  location_east: 140.103366,
+  location_west: 140.100276,
+  image: "/assets/pieces/area2.png",
   created_at: Time.now,
   updated_at: Time.now
 )
 
 Piece.create!(
-  name: '医学エリア',
+  name: "第三エリア",
   piece_set_id: 1,
-  location_x: 90,
-  location_y: 1090,
-  size_x: 190,
-  size_y: 190,
-  image: '/assets/4.png',
+  location_north: 36.112103,
+  location_south: 36.108413,
+  location_east: 140.101364,
+  location_west: 140.098860,
+  image: "/assets/pieces/area3.png",
   created_at: Time.now,
   updated_at: Time.now
 )
 
 Piece.create!(
-  name: '春日エリア',
+  name: "一の矢宿舎エリア",
   piece_set_id: 1,
-  location_x: 140,
-  location_y: 1430,
-  size_x: 80,
-  size_y: 160,
-  image: '/assets/5.png',
+  location_north: 36.120407,
+  location_south: 36.116762,
+  location_east: 140.099538,
+  location_west: 140.096265,
+  image: "/assets/pieces/ichinoya.png",
   created_at: Time.now,
   updated_at: Time.now
 )
 
-UserPiece.create!(
-  user_id: 1,
-  piece_id: 1,
+Piece.create!(
+  name: "農林技術エリア",
+  piece_set_id: 1,
+  location_north: 36.120508,
+  location_south: 36.117193,
+  location_east: 140.095860,
+  location_west: 140.093274,
+  image: "/assets/pieces/nourin.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "実験センターエリア",
+  piece_set_id: 1,
+  location_north: 36.117465,
+  location_south: 36.106004,
+  location_east: 140.101991,
+  location_west: 140.093890,
+  image: "/assets/pieces/test_center.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "本部棟エリア",
+  piece_set_id: 1,
+  location_north: 36.112468,
+  location_south: 36.111107,
+  location_east: 140.104496,
+  location_west: 140.103462,
+  image: "/assets/pieces/honbu.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "大学会館エリア",
+  piece_set_id: 1,
+  location_north: 36.106105,
+  location_south: 36.103974,
+  location_east: 140.103274,
+  location_west: 140.101303,
+  image: "/assets/pieces/kaikan.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "体育・芸術エリア",
+  piece_set_id: 1,
+  location_north: 36.104303,
+  location_south: 36.099957,
+  location_east: 140.106446,
+  location_west: 140.100663,
+  image: "/assets/pieces/taigei.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "体育施設エリア",
+  piece_set_id: 1,
+  location_north: 36.105080,
+  location_south: 36.099192,
+  location_east: 140.109633,
+  location_west: 140.105221,
+  image: "/assets/pieces/sports_shisetsu.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "平カス",
+  piece_set_id: 1,
+  location_north: 36.099497,
+  location_south: 36.098925,
+  location_east: 140.103597,
+  location_west: 140.103181,
+  image: "/assets/pieces/hirakasu.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "平砂宿舎エリア",
+  piece_set_id: 1,
+  location_north: 36.098583,
+  location_south: 36.095876,
+  location_east: 140.105703,
+  location_west: 140.102378,
+  image: "/assets/pieces/hirasuna.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "追越宿舎エリア",
+  piece_set_id: 1,
+  location_north: 36.095475,
+  location_south: 36.092622,
+  location_east: 140.106448,
+  location_west: 140.103617,
+  image: "/assets/pieces/oikoshi.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "医学エリア",
+  piece_set_id: 1,
+  location_north: 36.095301,
+  location_south: 36.090562,
+  location_east: 140.103721,
+  location_west: 140.099553,
+  image: "/assets/pieces/igaku.png",
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+Piece.create!(
+  name: "春日エリア",
+  piece_set_id: 1,
+  location_north: 36.088360,
+  location_south: 36.084845,
+  location_east: 140.107693,
+  location_west: 140.104317,
+  image: "/assets/pieces/kasuga.png",
   created_at: Time.now,
   updated_at: Time.now
 )

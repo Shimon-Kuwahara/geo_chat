@@ -2,39 +2,67 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="map"
 export default class extends Controller {
-  static targets = ["canvas"];
+  static values = { pieces: Array }
 
   connect() {
     this.pieces = JSON.parse(this.data.get("pieces"));
-    console.log(this.pieces);
-    this.drawImages();
+    this.initMap();
   }
 
-  drawImages() {
-    const canvas = this.canvasTarget;
-    const context = canvas.getContext('2d');
+  initMap() {
+    let historicalOverlay;
 
-    var image = new Image();
-    image.src = '/assets/flame.png';
-    image.addEventListener('load', function() {
-        context.drawImage(image, 0, 0, 800, 1600);
-    }, false);
+    function Grid(size) {
+      this.tileSize = size;
+    }
+    
+    Grid.prototype.maxZoom = 18;
+    Grid.prototype.minZoom = 14;
+    Grid.prototype.getTile = function(coord, zoom, ownerDocument) {
+      var div = ownerDocument.createElement('div');
+      return div;
+    };
+
+    const map = new google.maps.Map(this.element, {
+      zoom: 15,
+      center: {lat: 36.105523, lng: 140.102319},
+      mapTypeId: 'custom_type',
+      streetViewControl: false,
+      mapTypeControl: false,
+      restriction: {
+        latLngBounds: {
+          north: 36.128543,
+          south: 36.078037,
+          east: 140.124402,
+          west: 140.082094
+        },
+        strictBounds: false
+      }
+    });
+
+    map.mapTypes.set('custom_type', new Grid(new google.maps.Size(256, 256)));
+    historicalOverlay = new google.maps.GroundOverlay(
+      "/assets/pieces/flame.png",
+      {
+        north: 36.123562,
+        south: 36.084223,
+        east: 140.110225,
+        west: 140.090263,
+      }
+    );
+    historicalOverlay.setMap(map);
 
     this.pieces.forEach(piece => {
-      const img = new Image();
-      img.src = piece.image;
-      img.onload = () => {
-        console.log('Drawing image at (${piece.location_x}, ${piece.location_y})');
-        this.drawImage(context, img, piece);
-      };
-      img.onerror = () => {
-        console.error('Failed to load image: ${piece.image}');
-      };
+      historicalOverlay = new google.maps.GroundOverlay(
+        piece.image,
+        {
+          north: Number(piece.location_north),
+          south: Number(piece.location_south),
+          east: Number(piece.location_east),
+          west: Number(piece.location_west),
+        }
+      );
+      historicalOverlay.setMap(map);
     });
   }
-
-  drawImage(context, img, piece) {
-    context.drawImage(img, piece.location_x, piece.location_y, piece.size_x, piece.size_y);
-  }
-
 }
