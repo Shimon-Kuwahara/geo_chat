@@ -5,8 +5,10 @@ export default class extends Controller {
   static values = { pieces: Array }
 
   connect() {
-    this.pieces = JSON.parse(this.data.get("pieces"));
-    this.initMap();
+    document.addEventListener("turbo:load", () => {
+      this.pieces = JSON.parse(this.data.get("pieces"));
+      this.initMap();
+    });
   }
 
   initMap() {
