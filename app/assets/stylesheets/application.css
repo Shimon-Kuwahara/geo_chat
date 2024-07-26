@@ -14,8 +14,6 @@
  *= require_self
  */
 
- @import "bootstrap";
-
  img {
   object-fit: cover;
 }
