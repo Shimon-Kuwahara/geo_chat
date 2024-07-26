@@ -1,4 +1,8 @@
-<h2 style="margin-left: 0.5em;">チャット一覧</h2>
+<h3 style="margin-left: 0.5em;">
+  <article>
+    過去のチャット一覧
+  </article>
+</h3>
 <div class="chat-list">
   <% @rooms.each do |room| %>
     <% opponent_rooms = UserRoom.where(room_id: room.room_id).where.not(user_id: current_user.id) %>
