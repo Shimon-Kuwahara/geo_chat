@@ -73,3 +73,4 @@ gem 'omniauth-rails_csrf_protection'
 # 環境変数を管理するためインストール(vim ~/.zshrcで定義することも可能)
 gem 'carrierwave', '~> 2.0'
 gem 'dotenv-rails'
+gem 'bootstrap', '~> 5.0.0'
