@@ -1,5 +1,5 @@
 <div class="text-center game-icon">
- <%= link_to pieces_path do %>
+ <%= link_to pieces_path, data: { turbo: false } do %>
    <%= image_tag asset_path("pieces_icon.png"), height: 150, width: 150, alt: "pieces image" %>
    <div>ピース集めの旅</div>
  <% end %>
