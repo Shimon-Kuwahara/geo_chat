@@ -3,7 +3,7 @@
  <% if @user.profile_image? %>
     <img src="<%= @user.profile_image.url %>" height=150 width=150 alt="<%= @user.name %>'s profile image" />
  <%else%>
-    <img src="/assets/default.png" height=150 width=150 alt="<%= @user.name %>'s profile image" />
+    <%= image_tag asset_path("default.png"), height: 150, width: 150, alt: "#{@user.name}'s profile image" %>
  <%end%>
  <br />
  <div class="col-12 ml-3">

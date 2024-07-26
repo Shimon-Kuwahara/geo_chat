@@ -1,17 +1,17 @@
 require 'faker'
 
 User.create!(
-  name: 'shimon',
+  name: 'admin',
   user_id: 'test_user',
   profile: 'This is a test user.',
-  profile_image: Faker::Avatar.image(slug: 'test_user', size: '100x100'),
+  profile_image: Faker::Avatar.image(slug: 'test', size: '100x100'),
   age: 20,
   academic_year: '3',
   department: 'Computer Science',
   hometown: 'Toyama',
   latitude: Faker::Address.latitude,
   longitude: Faker::Address.longitude,
-  email: 'testuser@example.com',
+  email: Faker::Internet.free_email,
   password: 'foobar',
   password_confirmation: 'foobar',
   created_at: Time.now,
@@ -72,25 +72,8 @@ User.create!(
   updated_at: Time.now
 )
 
-ary = [User.find_by(user_id: 'test_user').id, User.find_by(user_id: 'amane2').id, User.find_by(user_id: 'kirita2').id,
-       User.find_by(user_id: 'hinano2').id]
-for user in ary do
-  for matched_user in ary do
-    next unless user != matched_user
-
-    Match.create!(
-      user_id: user,
-      matched_user_id: matched_user,
-      match_latitude: Faker::Address.latitude,
-      match_longitude: Faker::Address.longitude,
-      created_at: Time.now,
-      updated_at: Time.now
-    )
-  end
-end
-
 PieceSet.create!(
-  name: "University of Tsukuba",
+  name: 'University of Tsukuba',
   created_at: Time.now,
   updated_at: Time.now
 )
@@ -275,48 +258,67 @@ Piece.create!(
   updated_at: Time.now
 )
 
-100.times do |i|
-  User.create!(
-    name: Faker::Name.name,
-    user_id: "user_#{i + 1}",
-    profile: Faker::Lorem.paragraph(sentence_count: 3),
-    profile_image: Faker::Avatar.image(slug: "user_#{i + 1}", size: '100x100'),
-    age: rand(18..25),
-    academic_year: rand(1..4).to_s,
-    department: Faker::Educator.subject,
-    hometown: Faker::Address.city,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
-    email: Faker::Internet.unique.email,
-    password: 'password123',
-    password_confirmation: 'password123', # パスワード確認
-    created_at: Time.now,
-    updated_at: Time.now
-  )
-end
+Match.create!(
+  user_id: 1,
+  matched_user_id: 2,
+  match_latitude: Faker::Address.latitude,
+  match_longitude: Faker::Address.longitude,
+  created_at: Time.now,
+  updated_at: Time.now
+)
 
-user_ids = User.pluck(:id)
-104.times do
-  user_id = 1
-  matched_user_id = (user_ids - [user_id]).sample # 自己マッチを避ける
-  Match.create!(
-    user_id:,
-    matched_user_id:,
-    match_latitude: Faker::Address.latitude,
-    match_longitude: Faker::Address.longitude,
-    created_at: Time.now,
-    updated_at: Time.now
-  )
-end
-104.times do
-  user_id = 2
-  matched_user_id = (user_ids - [user_id]).sample # 自己マッチを避ける
-  Match.create!(
-    user_id:,
-    matched_user_id:,
-    match_latitude: Faker::Address.latitude,
-    match_longitude: Faker::Address.longitude,
-    created_at: Time.now,
-    updated_at: Time.now
-  )
-end
+Match.create!(
+  user_id: 2,
+  matched_user_id: 1,
+  match_latitude: Faker::Address.latitude,
+  match_longitude: Faker::Address.longitude,
+  created_at: Time.now,
+  updated_at: Time.now
+)
+
+# 10.times do |i|
+#   User.create!(
+#     name: Faker::Name.name,
+#     user_id: "user_#{i + 1}",
+#     profile: Faker::Lorem.paragraph(sentence_count: 3),
+#     profile_image: Faker::Avatar.image(slug: "user_#{i + 1}", size: '100x100'),
+#     age: rand(18..25),
+#     academic_year: rand(1..4).to_s,
+#     department: Faker::Educator.subject,
+#     hometown: Faker::Address.city,
+#     latitude: Faker::Address.latitude,
+#     longitude: Faker::Address.longitude,
+#     email: Faker::Internet.unique.email,
+#     password: 'password123',
+#     password_confirmation: 'password123', # パスワード確認
+#     created_at: Time.now,
+#     updated_at: Time.now
+#   )
+# end
+
+# user_ids = User.pluck(:id)
+# 14.times do
+#   user_id = 1
+#   matched_user_id = (user_ids - [user_id]).sample # 自己マッチを避ける
+#   Match.create!(
+#     user_id:,
+#     matched_user_id:,
+#     match_latitude: Faker::Address.latitude,
+#     match_longitude: Faker::Address.longitude,
+#     created_at: Time.now,
+#     updated_at: Time.now
+#   )
+# end
+
+# 14.times do
+#   user_id = 2
+#   matched_user_id = (user_ids - [user_id]).sample # 自己マッチを避ける
+#   Match.create!(
+#     user_id:,
+#     matched_user_id:,
+#     match_latitude: Faker::Address.latitude,
+#     match_longitude: Faker::Address.longitude,
+#     created_at: Time.now,
+#     updated_at: Time.now
+#   )
+# end
