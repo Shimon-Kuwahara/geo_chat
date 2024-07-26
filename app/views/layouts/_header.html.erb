@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
   <header>
-    <div class="header">ここだよ！~すれ違い通信~
+    <div class="header">~すれ違い通信~
      <div class="header-logout">
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
      </div>
     </div>
   </header>
 <% else %>
-  <header class="header">ここだよ！~すれ違い通信~</header>
+  <header class="header">GeoChat</header>
 <% end %>
